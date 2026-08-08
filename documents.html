@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="fr">
 
 <head>
@@ -8,7 +9,6 @@
 <title>Documents — MP-1</title>
 
 <style>
-
 body{
     margin:0;
     font-family:Arial,sans-serif;
@@ -74,17 +74,15 @@ footer{
     color:#657381;
     padding:30px;
 }
-
 </style>
-</head>
 
+</head>
 
 <body>
 
 <header>
-    <h1>Pr. Ag. E. BENHAMMOU</h1>
+<h1>Pr. Ag. E. BENHAMMOU</h1>
 </header>
-
 
 <main>
 
@@ -92,9 +90,7 @@ footer{
 ← Retour au site
 </a>
 
-<h2 id="title">
-Documents
-</h2>
+<h2 id="title">Documents</h2>
 
 <div id="path"></div>
 
@@ -104,11 +100,9 @@ Chargement...
 
 </main>
 
-
 <footer>
 Pr. Ag. E. BENHAMMOU · MP-1 — CPGE Laâyoune
 </footer>
-
 
 <script>
 
@@ -116,34 +110,28 @@ const OWNER = "BENHAMMOUELHACHMI";
 const REPO = "MP-1";
 const BRANCH = "main";
 
-
 /* Récupération du dossier demandé */
 
 const params = new URLSearchParams(window.location.search);
 
 let path = params.get("path") || "pdf";
 
-
-/* Nettoyage */
+/* Nettoyage du chemin */
 
 path = path.replace(/^\/+/, "");
 path = path.replace(/\/+$/, "");
 
-
-/* Affichage */
+/* Affichage du chemin */
 
 document.getElementById("path").textContent =
     "Dossier : " + path;
 
+/* Titre du dossier */
 
-/* Nom du dossier */
-
-let parts = path.split("/");
+const parts = path.split("/");
 
 document.getElementById("title").textContent =
-    parts[parts.length - 1]
-        .replace(/[-_]/g," ");
-
+    parts[parts.length - 1].replace(/[-_]/g, " ");
 
 /* API GitHub */
 
@@ -156,16 +144,19 @@ const api =
     "?ref=" +
     BRANCH;
 
-
 /* Chargement */
 
-fetch(api)
+fetch(api, {
+    headers: {
+        "Accept": "application/vnd.github+json"
+    }
+})
 
 .then(response => {
 
     if(!response.ok){
         throw new Error(
-            "Erreur GitHub : " + response.status
+            "GitHub a retourné l'erreur " + response.status
         );
     }
 
@@ -180,7 +171,6 @@ fetch(api)
 
     content.innerHTML = "";
 
-
     if(!Array.isArray(data)){
 
         content.innerHTML =
@@ -191,18 +181,15 @@ fetch(api)
         return;
     }
 
-
     /* Tri :
        dossiers d'abord,
-       puis PDF
+       puis fichiers PDF
     */
 
     data.sort((a,b) => {
 
         if(a.type !== b.type){
-
             return a.type === "dir" ? -1 : 1;
-
         }
 
         return a.name.localeCompare(
@@ -213,9 +200,7 @@ fetch(api)
 
     });
 
-
     let found = false;
-
 
     data.forEach(item => {
 
@@ -243,9 +228,7 @@ fetch(api)
             div.appendChild(a);
 
             content.appendChild(div);
-
         }
-
 
         /* PDF */
 
@@ -261,24 +244,19 @@ fetch(api)
 
             div.className = "item";
 
-
             const a =
                 document.createElement("a");
 
-
             /*
-             * URL du PDF sur GitHub Pages
+             * URL du fichier sur GitHub Pages
              */
 
             a.href =
-                "/" +
-                REPO +
-                "/" +
+                "./" +
                 item.path
                     .split("/")
                     .map(encodeURIComponent)
                     .join("/");
-
 
             a.target = "_blank";
 
@@ -287,15 +265,12 @@ fetch(api)
             a.textContent =
                 "📄 " + item.name;
 
-
             div.appendChild(a);
 
             content.appendChild(div);
-
         }
 
     });
-
 
     if(!found){
 
@@ -303,11 +278,9 @@ fetch(api)
             "<div class='error'>" +
             "Aucun document PDF dans ce dossier." +
             "</div>";
-
     }
 
 })
-
 
 .catch(error => {
 
@@ -319,6 +292,10 @@ fetch(api)
 
         error.message +
 
+        "<br><br>" +
+
+        "Vérifiez que le dépôt GitHub est public et que le dossier existe." +
+
         "</div>";
 
 });
@@ -326,5 +303,4 @@ fetch(api)
 </script>
 
 </body>
-
 </html>
