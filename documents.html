@@ -1,0 +1,33 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Documents — BENHAMMOUELHACHMI</title>
+<style>:root{--n:#17324d;--b:#24577a;--l:#f4f7fa;--g:#d9e1e8;--m:#657381}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--l);color:#24313d}header{background:var(--n);color:#fff}.head{max-width:1100px;margin:auto;padding:18px 20px}.head h1{font-size:1.2rem;margin:0}.sub{font-size:.82rem;opacity:.85;margin-top:3px}main{max-width:1100px;margin:auto;padding:35px 20px}.back{color:var(--b);text-decoration:none;display:inline-block;margin-bottom:18px}h2{color:var(--n);margin:0 0 8px;font-size:1.7rem}.path{color:var(--m);font-size:.9rem;margin-bottom:22px;word-break:break-all}.list{background:#fff;border:1px solid var(--g);border-radius:9px;overflow:hidden}.item{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 18px;border-bottom:1px solid #edf0f3}.item:last-child{border-bottom:0}.item a{color:var(--b);text-decoration:none;font-weight:600;word-break:break-word}.kind{color:var(--m);font-size:.82rem;white-space:nowrap}.empty,.error{background:#fff;border:1px solid var(--g);border-left:4px solid var(--b);padding:18px;border-radius:7px}footer{text-align:center;color:var(--m);padding:25px;font-size:.82rem}@media(max-width:600px){main{padding:30px 16px}.item{align-items:flex-start}h2{font-size:1.4rem}}</style>
+</head><body><header><div class="head"><h1>Pr. Ag. E. BENHAMMOU</h1><div class="sub">MP-1 — CPGE Laâyoune · Physique &amp; Chimie</div></div></header>
+<main><a class="back" href="index.html">← Retour au site</a><h2 id="title">Documents</h2><div class="path" id="path"></div><div id="status" class="empty">Chargement des documents…</div><div id="list" class="list" style="display:none"></div></main>
+<footer>Pr. Ag. E. BENHAMMOU · MP-1 — CPGE Laâyoune</footer>
+<script>
+const OWNER="BENHAMMOUELHACHMI",REPO="BENHAMMOUELHACHMI.github.io",BRANCH="main";
+const path=(new URLSearchParams(location.search).get("path")||"").replace(/^\/+|\/+$/g,"");
+const title=document.getElementById("title"),box=document.getElementById("path"),status=document.getElementById("status"),list=document.getElementById("list");
+function nice(s){let x=s.split("/").pop()||"Documents";return x.replace(/[-_]/g," ").replace(/\b\w/g,c=>c.toUpperCase())}
+function folder(p){return "documents.html?path="+encodeURIComponent(p)}
+function file(p){return "https://"+OWNER.toLowerCase()+".github.io/"+p.split("/").map(encodeURIComponent).join("/")}
+async function load(){
+ if(!path){status.textContent="Aucun dossier indiqué.";return}
+ title.textContent=nice(path);box.textContent=path;
+ try{
+  const r=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}`);
+  if(!r.ok)throw new Error("code "+r.status);
+  let data=await r.json();
+  data=data.filter(x=>x.type==="dir"||/\.pdf$/i.test(x.name));
+  data.sort((a,b)=>a.type!==b.type?(a.type==="dir"?-1:1):a.name.localeCompare(b.name,"fr",{numeric:true}));
+  if(!data.length){status.textContent="Aucun document PDF n’est encore disponible dans cette rubrique.";return}
+  status.style.display="none";list.style.display="block";
+  data.forEach(x=>{let row=document.createElement("div");row.className="item";let a=document.createElement("a");
+   a.href=x.type==="dir"?folder(x.path):file(x.path);a.target=x.type==="dir"?"_self":"_blank";a.rel="noopener";
+   a.textContent=(x.type==="dir"?"📁 ":"📄 ")+x.name;row.appendChild(a);
+   let k=document.createElement("span");k.className="kind";k.textContent=x.type==="dir"?"Dossier":"PDF";row.appendChild(k);list.appendChild(row)
+  });
+ }catch(e){status.className="error";status.textContent="Impossible de charger les documents : "+e.message}
+}
+load();
+</script></body></html>
