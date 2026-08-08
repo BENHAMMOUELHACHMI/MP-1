@@ -1,94 +1,330 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Documents — BENHAMMOUELHACHMI</title>
+
+<title>Documents — MP-1</title>
+
 <style>
-:root{--n:#17324d;--b:#24577a;--l:#f4f7fa;--g:#d9e1e8;--m:#657381}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--l);color:#24313d}
-header{background:var(--n);color:#fff}.head{max-width:1100px;margin:auto;padding:18px 20px}
-.head h1{font-size:1.2rem;margin:0}.sub{font-size:.82rem;opacity:.85;margin-top:3px}
-main{max-width:1100px;margin:auto;padding:35px 20px}.back{color:var(--b);text-decoration:none;display:inline-block;margin-bottom:18px}
-h2{color:var(--n);margin:0 0 8px;font-size:1.7rem}.path{color:var(--m);font-size:.9rem;margin-bottom:22px;word-break:break-all}
-.list{background:#fff;border:1px solid var(--g);border-radius:9px;overflow:hidden}
-.item{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 18px;border-bottom:1px solid #edf0f3}
-.item:last-child{border-bottom:0}.item a{color:var(--b);text-decoration:none;font-weight:600;word-break:break-word}
-.kind{color:var(--m);font-size:.82rem;white-space:nowrap}.empty,.error{background:#fff;border:1px solid var(--g);border-left:4px solid var(--b);padding:18px;border-radius:7px}
-footer{text-align:center;color:var(--m);padding:25px;font-size:.82rem}
-@media(max-width:600px){main{padding:30px 16px}.item{align-items:flex-start}h2{font-size:1.4rem}}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f7fa;
+    color:#24313d;
+}
+
+header{
+    background:#17324d;
+    color:white;
+    padding:20px;
+}
+
+header h1{
+    margin:0;
+    font-size:1.3rem;
+}
+
+main{
+    max-width:1000px;
+    margin:auto;
+    padding:30px 20px;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#24577a;
+    text-decoration:none;
+}
+
+h2{
+    color:#17324d;
+}
+
+#path{
+    color:#657381;
+    margin-bottom:20px;
+}
+
+.item{
+    background:white;
+    border:1px solid #d9e1e8;
+    padding:16px;
+    margin-bottom:8px;
+    border-radius:8px;
+}
+
+.item a{
+    text-decoration:none;
+    color:#24577a;
+    font-weight:bold;
+}
+
+.error{
+    background:white;
+    border-left:4px solid #c62828;
+    padding:20px;
+}
+
+footer{
+    text-align:center;
+    color:#657381;
+    padding:30px;
+}
+
 </style>
 </head>
+
+
 <body>
-<header><div class="head"><h1>Pr. Ag. E. BENHAMMOU</h1><div class="sub">MP-1 — CPGE Laâyoune · Physique &amp; Chimie</div></div></header>
+
+<header>
+    <h1>Pr. Ag. E. BENHAMMOU</h1>
+</header>
+
+
 <main>
-<a class="back" href="index.html">← Retour au site</a>
-<h2 id="title">Documents</h2>
-<div class="path" id="path"></div>
-<div id="status" class="empty">Chargement des documents…</div>
-<div id="list" class="list" style="display:none"></div>
+
+<a class="back" href="index.html">
+← Retour au site
+</a>
+
+<h2 id="title">
+Documents
+</h2>
+
+<div id="path"></div>
+
+<div id="content">
+Chargement...
+</div>
+
 </main>
-<footer>Pr. Ag. E. BENHAMMOU · MP-1 — CPGE Laâyoune</footer>
+
+
+<footer>
+Pr. Ag. E. BENHAMMOU · MP-1 — CPGE Laâyoune
+</footer>
+
+
 <script>
-const OWNER="BENHAMMOUELHACHMI";
-const REPO="MP-1";
-const BRANCH="main";
-const SITE_BASE="/MP-1/";
 
-const params=new URLSearchParams(location.search);
-const path=(params.get("path")||"").replace(/^\/+|\/+$/g,"");
-const title=document.getElementById("title");
-const box=document.getElementById("path");
-const status=document.getElementById("status");
-const list=document.getElementById("list");
+const OWNER = "BENHAMMOUELHACHMI";
+const REPO = "MP-1";
+const BRANCH = "main";
 
-function nice(s){
-  const x=s.split("/").pop()||"Documents";
-  return x.replace(/[-_]/g," ").replace(/\b\w/g,c=>c.toUpperCase());
-}
-function folder(p){return "documents.html?path="+encodeURIComponent(p);}
-function file(p){
-  return SITE_BASE+p.split("/").map(encodeURIComponent).join("/");
-}
 
-async function load(){
-  if(!path){status.textContent="Aucun dossier indiqué.";return;}
-  title.textContent=nice(path);
-  box.textContent=path;
-  const api="https://api.github.com/repos/"+OWNER+"/"+encodeURIComponent(REPO)+"/contents/"+path+"?ref="+BRANCH;
-  try{
-    const r=await fetch(api,{headers:{"Accept":"application/vnd.github+json"}});
-    if(!r.ok) throw new Error("code "+r.status);
-    let data=await r.json();
-    if(!Array.isArray(data)) throw new Error("ce chemin n'est pas un dossier");
-    data=data.filter(x=>x.type==="dir"||/\.pdf$/i.test(x.name));
-    data.sort((a,b)=>a.type!==b.type?(a.type==="dir"?-1:1):a.name.localeCompare(b.name,"fr",{numeric:true}));
-    if(!data.length){
-      status.textContent="Aucun document PDF n’est encore disponible dans cette rubrique.";
-      return;
+/* Récupération du dossier demandé */
+
+const params = new URLSearchParams(window.location.search);
+
+let path = params.get("path") || "pdf";
+
+
+/* Nettoyage */
+
+path = path.replace(/^\/+/, "");
+path = path.replace(/\/+$/, "");
+
+
+/* Affichage */
+
+document.getElementById("path").textContent =
+    "Dossier : " + path;
+
+
+/* Nom du dossier */
+
+let parts = path.split("/");
+
+document.getElementById("title").textContent =
+    parts[parts.length - 1]
+        .replace(/[-_]/g," ");
+
+
+/* API GitHub */
+
+const api =
+    "https://api.github.com/repos/" +
+    OWNER + "/" +
+    REPO +
+    "/contents/" +
+    path +
+    "?ref=" +
+    BRANCH;
+
+
+/* Chargement */
+
+fetch(api)
+
+.then(response => {
+
+    if(!response.ok){
+        throw new Error(
+            "Erreur GitHub : " + response.status
+        );
     }
-    status.style.display="none";
-    list.style.display="block";
-    data.forEach(x=>{
-      const row=document.createElement("div");
-      row.className="item";
-      const a=document.createElement("a");
-      a.href=x.type==="dir"?folder(x.path):file(x.path);
-      if(x.type!=="dir"){a.target="_blank";a.rel="noopener";}
-      a.textContent=(x.type==="dir"?"📁 ":"📄 ")+x.name;
-      row.appendChild(a);
-      const k=document.createElement("span");
-      k.className="kind";
-      k.textContent=x.type==="dir"?"Dossier":"PDF";
-      row.appendChild(k);
-      list.appendChild(row);
+
+    return response.json();
+
+})
+
+.then(data => {
+
+    const content =
+        document.getElementById("content");
+
+    content.innerHTML = "";
+
+
+    if(!Array.isArray(data)){
+
+        content.innerHTML =
+            "<div class='error'>" +
+            "Ce chemin ne correspond pas à un dossier." +
+            "</div>";
+
+        return;
+    }
+
+
+    /* Tri :
+       dossiers d'abord,
+       puis PDF
+    */
+
+    data.sort((a,b) => {
+
+        if(a.type !== b.type){
+
+            return a.type === "dir" ? -1 : 1;
+
+        }
+
+        return a.name.localeCompare(
+            b.name,
+            "fr",
+            {numeric:true}
+        );
+
     });
-  }catch(e){
-    status.className="error";
-    status.textContent="Impossible de charger les documents : "+e.message;
-  }
-}
-load();
+
+
+    let found = false;
+
+
+    data.forEach(item => {
+
+        /* Dossier */
+
+        if(item.type === "dir"){
+
+            found = true;
+
+            const div =
+                document.createElement("div");
+
+            div.className = "item";
+
+            const a =
+                document.createElement("a");
+
+            a.href =
+                "documents.html?path=" +
+                encodeURIComponent(item.path);
+
+            a.textContent =
+                "📁 " + item.name;
+
+            div.appendChild(a);
+
+            content.appendChild(div);
+
+        }
+
+
+        /* PDF */
+
+        else if(
+            item.type === "file" &&
+            item.name.toLowerCase().endsWith(".pdf")
+        ){
+
+            found = true;
+
+            const div =
+                document.createElement("div");
+
+            div.className = "item";
+
+
+            const a =
+                document.createElement("a");
+
+
+            /*
+             * URL du PDF sur GitHub Pages
+             */
+
+            a.href =
+                "/" +
+                REPO +
+                "/" +
+                item.path
+                    .split("/")
+                    .map(encodeURIComponent)
+                    .join("/");
+
+
+            a.target = "_blank";
+
+            a.rel = "noopener";
+
+            a.textContent =
+                "📄 " + item.name;
+
+
+            div.appendChild(a);
+
+            content.appendChild(div);
+
+        }
+
+    });
+
+
+    if(!found){
+
+        content.innerHTML =
+            "<div class='error'>" +
+            "Aucun document PDF dans ce dossier." +
+            "</div>";
+
+    }
+
+})
+
+
+.catch(error => {
+
+    document.getElementById("content").innerHTML =
+
+        "<div class='error'>" +
+
+        "<strong>Impossible de charger les documents.</strong><br><br>" +
+
+        error.message +
+
+        "</div>";
+
+});
+
 </script>
+
 </body>
+
 </html>
