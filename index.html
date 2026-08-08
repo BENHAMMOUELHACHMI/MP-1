@@ -1,102 +1,21 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CPGE MP — Physique & Chimie</title>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pr. Ag. E. BENHAMMOU — MP-1 CPGE Laâyoune</title>
 <style>
-:root{--navy:#17324d;--blue:#24577a;--light:#f4f7fa;--line:#d9e1e8;--text:#24313d;--muted:#657381}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--light);color:var(--text);line-height:1.6}
-header{background:var(--navy);color:white;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px #0002}
-.header-inner{max-width:1200px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo h1{font-size:1.25rem}.logo p{font-size:.82rem;opacity:.8}
-nav{display:flex;gap:18px}nav a{color:#fff;text-decoration:none;font-size:.92rem}nav a:hover{text-decoration:underline}
-.menu{display:none;background:none;border:0;color:#fff;font-size:1.7rem}
-.hero{background:white;border-bottom:1px solid var(--line)}
-.hero-inner{max-width:1200px;margin:auto;padding:58px 22px}
-.hero h2{font-size:2.25rem;color:var(--navy);margin-bottom:10px}.hero p{max-width:760px;color:var(--muted)}
-main{max-width:1200px;margin:auto;padding:42px 22px}
-section{margin-bottom:48px}.section-title{color:var(--navy);font-size:1.65rem;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px;box-shadow:0 2px 5px #00000008}
-.card h3{color:var(--blue);margin-bottom:12px}.card p{color:var(--muted);font-size:.93rem}
-.card ul{list-style:none;margin-top:14px}.card li{border-top:1px solid #edf0f3;padding:9px 0}
-.card a{color:var(--blue);text-decoration:none}.card a:hover{text-decoration:underline}
-.resources{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.resource{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 18px;display:flex;justify-content:space-between;gap:15px;align-items:center}
-.resource span{font-weight:600}.resource a{background:var(--navy);color:#fff;text-decoration:none;padding:7px 12px;border-radius:5px;font-size:.86rem;white-space:nowrap}
-.notice{background:#fff;border-left:4px solid var(--blue);padding:18px;border-radius:6px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-footer{background:var(--navy);color:#fff;text-align:center;padding:22px;font-size:.85rem}
-@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}.resources{grid-template-columns:1fr}}
-@media(max-width:620px){
-.header-inner{padding:13px 18px}.menu{display:block}nav{display:none;position:absolute;left:0;right:0;top:64px;background:var(--navy);padding:12px 20px;flex-direction:column;gap:10px}nav.open{display:flex}
-.hero-inner{padding:42px 18px}.hero h2{font-size:1.7rem}main{padding:32px 18px}.grid{grid-template-columns:1fr}.section-title{font-size:1.4rem}
-.resource{align-items:flex-start;flex-direction:column}.resource a{width:100%;text-align:center}
-}
-</style>
-</head>
-<body>
-<header>
-<div class="header-inner">
-<div class="logo"><h1>Pr. Ag. E. BENHAMMOU</h1><p>MP-1 — CPGE Laâyoune · Physique &amp; Chimie</p></div>
-<button class="menu" aria-label="Ouvrir le menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
-<nav>
-<a href="#accueil">Accueil</a><a href="#cours">Cours</a><a href="#ressources">Ressources</a><a href="#concours">Concours</a>
-</nav>
-</div>
-</header>
-
-<section class="hero" id="accueil"><div class="hero-inner">
-<h2>Bienvenue dans l’espace pédagogique de MP-1</h2>
-<p><strong>Pr. Ag. E. BENHAMMOU</strong> · <strong>MP-1 — CPGE Laâyoune</strong><br>Un espace centralisé pour retrouver les cours, fiches, exercices et ressources de Physique-Chimie et préparer efficacement les concours.</p>
-</div></section>
-
+:root{--n:#17324d;--b:#24577a;--l:#f4f7fa;--g:#d9e1e8;--t:#24313d;--m:#657381}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--l);color:var(--t)}header{background:var(--n);color:#fff;position:sticky;top:0;z-index:2}.head{max-width:1200px;margin:auto;padding:15px 20px;display:flex;justify-content:space-between;align-items:center}.logo h1{margin:0;font-size:1.2rem}.logo p{margin:2px 0 0;font-size:.82rem;opacity:.85}nav{display:flex;gap:18px}nav a{color:#fff;text-decoration:none}.menu{display:none;background:none;border:0;color:#fff;font-size:1.6rem}.hero{background:#fff;border-bottom:1px solid var(--g)}.hero>div,main{max-width:1200px;margin:auto;padding:45px 20px}.hero h2{color:var(--n);font-size:2.1rem;margin:0 0 10px}.hero p{max-width:800px;color:var(--m)}h2{color:var(--n)}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}.card,.sub{background:#fff;border:1px solid var(--g);border-radius:9px;padding:20px;text-align:center}.card h3,.sub h3{color:var(--b)}.card a{background:var(--n);color:#fff;padding:8px 12px;border-radius:5px;text-decoration:none}.subgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.sub ul{list-style:none;padding:0}.sub li{padding:7px;border-top:1px solid #edf0f3}.sub a{color:var(--b)}.notice{background:#fff;border-left:4px solid var(--b);padding:18px}footer{background:var(--n);color:#fff;text-align:center;padding:20px;font-size:.85rem}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.subgrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.head{padding:12px 16px}.menu{display:block}nav{display:none;position:absolute;top:60px;left:0;right:0;background:var(--n);padding:12px 20px;flex-direction:column}nav.open{display:flex}.hero>div,main{padding:35px 16px}.hero h2{font-size:1.65rem}.grid{grid-template-columns:1fr 1fr}.subgrid{grid-template-columns:1fr}}@media(max-width:390px){.grid{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="head"><div class="logo"><h1>Pr. Ag. E. BENHAMMOU</h1><p>MP-1 — CPGE Laâyoune · Physique &amp; Chimie</p></div><button class="menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button><nav><a href="#accueil">Accueil</a><a href="#ressources">Ressources</a><a href="#concours">Concours</a></nav></div></header>
+<section class="hero" id="accueil"><div><h2>Bienvenue dans l’espace pédagogique de MP-1</h2><p><b>Pr. Ag. E. BENHAMMOU</b> — Cours, exercices, DS, DM, TP et préparation aux concours.</p></div></section>
 <main>
-<section id="cours">
-<h2 class="section-title">Cours</h2>
-<div class="grid">
-<div class="card"><h3>Physique</h3><p>Cours et documents classés par grands domaines.</p>
-<ul>
-<li><a href="pdf/physique/mecanique.pdf">Mécanique</a></li>
-<li><a href="pdf/physique/electrocinétique.pdf">Électrocinétique</a></li>
-<li><a href="pdf/physique/electromagnetisme.pdf">Électromagnétisme</a></li>
-<li><a href="pdf/physique/optique.pdf">Optique</a></li>
-<li><a href="pdf/physique/thermodynamique.pdf">Thermodynamique</a></li>
-<li><a href="pdf/physique/ondes.pdf">Ondes et signaux</a></li>
-</ul></div>
-<div class="card"><h3>Chimie</h3><p>Cours et fiches de synthèse de chimie.</p>
-<ul>
-<li><a href="pdf/chimie/thermodynamique.pdf">Thermodynamique chimique</a></li>
-<li><a href="pdf/chimie/equilibres.pdf">Équilibres chimiques</a></li>
-<li><a href="pdf/chimie/oxydoreduction.pdf">Oxydoréduction</a></li>
-<li><a href="pdf/chimie/electrochimie.pdf">Électrochimie</a></li>
-<li><a href="pdf/chimie/cinetique.pdf">Cinétique chimique</a></li>
-</ul></div>
-<div class="card"><h3>Méthodes</h3><p>Les outils pour progresser et mieux rédiger.</p>
-<ul>
-<li>Analyse dimensionnelle</li><li>Ordres de grandeur</li><li>Rédaction scientifique</li><li>Méthodes de résolution</li><li>Préparation aux concours</li>
-</ul></div>
-</div>
-</section>
-
-<section id="ressources">
-<h2 class="section-title">Ressources</h2>
-<div class="resources">
-<div class="resource"><span>📘 Fiches de synthèse</span><a href="#">Accéder</a></div>
-<div class="resource"><span>📝 Exercices</span><a href="#">Accéder</a></div>
-<div class="resource"><span>📄 DS et DM</span><a href="#">Accéder</a></div>
-<div class="resource"><span>🧪 Travaux pratiques</span><a href="#">Accéder</a></div>
-</div>
-</section>
-
-<section id="concours">
-<h2 class="section-title">Préparation aux concours</h2>
-<div class="notice"><strong>Objectif :</strong> comprendre le cours, s’entraîner régulièrement et développer les méthodes nécessaires aux épreuves de concours.</div>
-</section>
-</main>
-
-<footer>Pr. Ag. E. BENHAMMOU · MP-1 — CPGE Laâyoune · Physique &amp; Chimie</footer>
-</body>
-</html>
+<section id="ressources"><h2>Ressources</h2><div class="grid">
+<div class="card"><h3>📚 Cours</h3><p>Physique et chimie</p><a href="pdf/cours/">Accéder</a></div>
+<div class="card"><h3>📝 Exercices</h3><p>Séries et entraînement</p><a href="pdf/exercices/">Accéder</a></div>
+<div class="card"><h3>📋 DS / DM</h3><p>Sujets et corrigés</p><a href="pdf/ds-dm/">Accéder</a></div>
+<div class="card"><h3>🔬 TP</h3><p>Travaux pratiques</p><a href="pdf/tp/">Accéder</a></div>
+<div class="card"><h3>🏆 Concours</h3><p>Annales</p><a href="#concours">Voir</a></div></div></section>
+<section id="concours"><h2>🏆 Concours</h2><div class="subgrid">
+<div class="sub"><h3>CNC</h3><ul><li><a href="pdf/concours/cnc/physique/">Physique</a></li><li><a href="pdf/concours/cnc/chimie/">Chimie</a></li></ul></div>
+<div class="sub"><h3>Centrale</h3><ul><li><a href="pdf/concours/centrale/physique/">Physique</a></li><li><a href="pdf/concours/centrale/chimie/">Chimie</a></li></ul></div>
+<div class="sub"><h3>Mines-Ponts</h3><ul><li><a href="pdf/concours/mines-ponts/physique/">Physique</a></li><li><a href="pdf/concours/mines-ponts/chimie/">Chimie</a></li></ul></div>
+<div class="sub"><h3>CCP / CCINP</h3><ul><li><a href="pdf/concours/ccp-ccinp/physique/">Physique</a></li><li><a href="pdf/concours/ccp-ccinp/chimie/">Chimie</a></li></ul></div></div></section>
+<section><div class="notice">Les documents seront ajoutés progressivement dans les rubriques correspondantes.</div></section>
+</main><footer>Pr. Ag. E. BENHAMMOU · MP-1 — CPGE Laâyoune</footer></body></html>
