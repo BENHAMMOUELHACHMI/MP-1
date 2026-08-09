@@ -180,37 +180,58 @@
             </div>
         </div>
 
-        <!-- BLOC TD, DS, TP, TIPE -->
-        <div class="card" style="display: flex; flex-direction: column; gap: 15px;">
+        <!-- BLOC TD DÉTAILLÉ SANS FOND COLORÉ -->
+        <div class="card">
+            <strong style="color: #17324d; display: block; font-size: 1.2rem; margin-bottom: 5px;">📝 TD (Travaux dirigés)</strong>
+            <span style="font-size: 0.9rem; color: #657381; display: block; margin-bottom: 12px; font-style: italic;">Séries et entraînements par matière :</span>
+            
+            <div style="margin-bottom: 15px;">
+                <strong style="color: #24313d; font-size: 0.95rem; display: block; margin-bottom: 4px;">🌌 Physique :</strong>
+                <ul style="list-style-type: none; padding-left: 0; margin: 0; line-height: 2;">
+                    <li>⚙️ <a href="documents.html?path=pdf/td/physique/electronique" style="color: #24577a; font-weight: bold; text-decoration: underline;">Électronique</a></li>
+                    <li>🧱 <a href="documents.html?path=pdf/td/physique/mecanique-solides" style="color: #24577a; font-weight: bold; text-decoration: underline;">Mécanique des solides</a></li>
+                    <li>⚡ <a href="documents.html?path=pdf/td/physique/electromagnetisme" style="color: #24577a; font-weight: bold; text-decoration: underline;">Électromagnétisme</a></li>
+                    <li>👁️ <a href="documents.html?path=pdf/td/physique/optique" style="color: #24577a; font-weight: bold; text-decoration: underline;">Optique</a></li>
+                    <li>🔥 <a href="documents.html?path=pdf/td/physique/thermodynamique" style="color: #24577a; font-weight: bold; text-decoration: underline;">Thermodynamique</a> <span style="font-size: 0.85rem; color: #64748b; font-style: italic; font-weight: normal;">(Transfert & Statistique)</span></li>
+                    <li>⚛️ <a href="documents.html?path=pdf/td/physique/mecanique-quantique" style="color: #24577a; font-weight: bold; text-decoration: underline;">Mécanique quantique</a></li>
+                </ul>
+            </div>
+
             <div>
-                <strong style="color: #17324d; display: block;">📝 TD</strong>
-                <span style="font-size: 0.9rem; color: #657381;">Travaux dirigés (séries et entraînement)</span><br>
-                <a class="btn-accéder" href="documents.html?path=pdf/td">Accéder →</a>
-                 <ul>
-                <li>⚙️ <a href="documents.html?path=pdf/td/physique/electronique">Électronique</a></li>
-                <li>🧱 <a href="documents.html?path=pdf/td/physique/mecanique-solides">Mécanique des solides</a></li>
-                <li>⚡ <a href="documents.html?path=pdf/td/physique/electromagnetisme">Électromagnétisme</a></li>
-                <li>👁️ <a href="documents.html?path=pdf/td/physique/optique">Optique</a></li>
-                <li>🔥 <a href="documents.html?path=pdf/td/physique/thermodynamique">Thermodynamique</a> <span style="font-size: 0.85rem; color: #64748b; font-style: italic; font-weight: normal;">(Transfert thermique & Statistique)</span></li>
-                <li>⚛️ <a href="documents.html?path=pdf/td/physique/mecanique-quantique">Mécanique quantique</a></li>
-            </ul>
-                 <ul>
-                <li>⚙️ <a href="documents.html?path=pdf/td/chimie/thermochimie">Thermochimie</a></li>
-                <li>🧱 <a href="documents.html?path=pdf/td/chimie/électrochimie">Électrochimie</a></li>
-           </ul>
-            </div>
-            <div style="border-top: 1px dashed #e2e8f0; padding-top: 10px;">
-                <strong style="color: #17324d; display: block;">📋 DS / DM</strong>
-                <span style="font-size: 0.9rem; color: #657381;">Sujets et corrigés</span><br>
-                <a class="btn-accéder" href="documents.html?path=pdf/ds-dm">Accéder →</a>
-            </div>
-            <div style="border-top: 1px dashed #e2e8f0; padding-top: 10px;">
-                <strong style="color: #17324d; display: block;">🔬 TP / TIPE</strong>
-                <span style="font-size: 0.9rem; color: #657381;">Travaux pratiques & initiatives encadrées</span><br>
-                <a class="btn-accéder" href="documents.html?path=pdf/tp">Accéder →</a>
+                <strong style="color: #24313d; font-size: 0.95rem; display: block; margin-bottom: 4px;">🧪 Chimie :</strong>
+                <ul style="list-style-type: none; padding-left: 0; margin: 0; line-height: 2;">
+                    <li>⚙️ <a href="documents.html?path=pdf/td/chimie/thermochimie" style="color: #24577a; font-weight: bold; text-decoration: underline;">Thermochimie</a></li>
+                    <li>🧱 <a href="documents.html?path=pdf/td/chimie/electrochimie" style="color: #24577a; font-weight: bold; text-decoration: underline;">Électrochimie</a></li>
+                </ul>
             </div>
         </div>
 
+    </div> <!-- Fermeture de la première grille (Cours + TD) -->
+
+    <!-- NOUVELLE GRILLE HORIZONTALE EN DESSOUS POUR DS, TP ET TIPE SÉPARÉS -->
+    <div class="grid-container" style="margin-bottom: 30px; margin-top: 25px;">
+        
+        <!-- Bloc DS / DM -->
+        <div class="card">
+            <h4>📋 DS / DM</h4>
+            <span style="font-size: 0.9rem; color: #657381;">Sujets de devoirs surveillés et devoirs maison avec corrigés.</span><br>
+            <a class="btn-accéder" href="documents.html?path=pdf/ds-dm" style="margin-top: 15px; display: inline-block;">Accéder aux DS / DM →</a>
+        </div>
+
+        <!-- Bloc TP Seul -->
+        <div class="card">
+            <h4>🔬 TP</h4>
+            <span style="font-size: 0.9rem; color: #657381;">Sujets, manipulations et comptes-rendus de travaux pratiques.</span><br>
+            <a class="btn-accéder" href="documents.html?path=pdf/tp" style="margin-top: 15px; display: inline-block;">Accéder aux TP →</a>
+        </div>
+
+        <!-- Bloc TIPE Seul -->
+        <div class="card">
+            <h4>💡 TIPE</h4>
+            <span style="font-size: 0.9rem; color: #657381;">Travaux d'initiatives personnelles encadrés.</span><br>
+            <a class="btn-accéder" href="documents.html?path=pdf/tipe" style="margin-top: 15px; display: inline-block;">Accéder aux TIPE →</a>
+        </div>
+        
     </div>
 
     <!-- SECTION CONCOURS ÉLARGIE -->
