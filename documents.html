@@ -1,83 +1,23 @@
 <!doctype html>
-
 <html lang="fr">
-
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>Documents — MP-1</title>
-
 <style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f4f7fa;
-    color:#24313d;
-}
-
-header{
-    background:#17324d;
-    color:white;
-    padding:20px;
-}
-
-header h1{
-    margin:0;
-    font-size:1.3rem;
-}
-
-main{
-    max-width:1000px;
-    margin:auto;
-    padding:30px 20px;
-}
-
-.back{
-    display:inline-block;
-    margin-bottom:20px;
-    color:#24577a;
-    text-decoration:none;
-}
-
-h2{
-    color:#17324d;
-}
-
-#path{
-    color:#657381;
-    margin-bottom:20px;
-}
-
-.item{
-    background:white;
-    border:1px solid #d9e1e8;
-    padding:16px;
-    margin-bottom:8px;
-    border-radius:8px;
-}
-
-.item a{
-    text-decoration:none;
-    color:#24577a;
-    font-weight:bold;
-}
-
-.error{
-    background:white;
-    border-left:4px solid #c62828;
-    padding:20px;
-}
-
-footer{
-    text-align:center;
-    color:#657381;
-    padding:30px;
-}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fa;color:#24313d;}
+header{background:#17324d;color:white;padding:20px;}
+header h1{margin:0;font-size:1.3rem;}
+main{max-width:1000px;margin:auto;padding:30px 20px;}
+.back{display:inline-block;margin-bottom:20px;color:#24577a;text-decoration:none;}
+h2{color:#17324d;}
+#path{color:#657381;margin-bottom:20px;}
+.item{background:white;border:1px solid #d9e1e8;padding:16px;margin-bottom:8px;border-radius:8px;}
+.item a{text-decoration:none;color:#24577a;font-weight:bold;}
+.error{background:white;border-left:4px solid #c62828;padding:20px;}
+footer{text-align:center;color:#657381;padding:30px;}
 </style>
-
 </head>
-
 <body>
 
 <header>
@@ -85,19 +25,10 @@ footer{
 </header>
 
 <main>
-
-<a class="back" href="index.html">
-← Retour au site
-</a>
-
+<a class="back" href="index.html">← Retour au site</a>
 <h2 id="title">Documents</h2>
-
 <div id="path"></div>
-
-<div id="content">
-Chargement...
-</div>
-
+<div id="content">Chargement...</div>
 </main>
 
 <footer>
@@ -105,202 +36,86 @@ Pr. Ag. E. BENHAMMOU · MP-1 — CPGE Laâyoune
 </footer>
 
 <script>
-
-const OWNER = "BENHAMMOUELHACHMI";
-const REPO = "MP-1";
-const BRANCH = "main";
-
-/* Récupération du dossier demandé */
-
 const params = new URLSearchParams(window.location.search);
+let currentPath = params.get("path") || "pdf";
 
-let path = params.get("path") || "pdf";
+// Nettoyage et affichage du chemin
+currentPath = currentPath.replace(/^\/+|\/+$/g, "");
+document.getElementById("path").textContent = "Dossier : " + currentPath;
 
-/* Nettoyage du chemin */
+const parts = currentPath.split("/");
+document.getElementById("title").textContent = parts[parts.length - 1].replace(/[-_]/g, " ");
 
-path = path.replace(/^\/+/, "");
-path = path.replace(/\/+$/, "");
-
-/* Affichage du chemin */
-
-document.getElementById("path").textContent =
-    "Dossier : " + path;
-
-/* Titre du dossier */
-
-const parts = path.split("/");
-
-document.getElementById("title").textContent =
-    parts[parts.length - 1].replace(/[-_]/g, " ");
-
-/* API GitHub */
-
-const api =
-    "https://api.github.com/repos/" +
-    OWNER + "/" +
-    REPO +
-    "/contents/" +
-    path +
-    "?ref=" +
-    BRANCH;
-
-/* Chargement */
-
-fetch(api, {
-    headers: {
-        "Accept": "application/vnd.github+json"
-    }
-})
-
+// On charge directement le fichier JSON généré par votre script automatique
+fetch("./documents.json")
 .then(response => {
-
-    if(!response.ok){
-        throw new Error(
-            "GitHub a retourné l'erreur " + response.status
-        );
-    }
-
+    if(!response.ok) throw new Error("Le fichier de données documents.json est introuvable à la racine.");
     return response.json();
-
 })
-
-.then(data => {
-
-    const content =
-        document.getElementById("content");
-
+.then(allFiles => {
+    const content = document.getElementById("content");
     content.innerHTML = "";
 
-    if(!Array.isArray(data)){
+    const subDirs = new Set();
+    const pdfsInDir = [];
 
-        content.innerHTML =
-            "<div class='error'>" +
-            "Ce chemin ne correspond pas à un dossier." +
-            "</div>";
+    allFiles.forEach(item => {
+        const filePath = item.fichier; // Ex: pdf/concours/ccp-ccinp/physique/cours1.pdf
+        
+        if (filePath.startsWith(currentPath + "/")) {
+            const relativePart = filePath.substring(currentPath.length + 1);
+            const pathParts = relativePart.split("/");
 
-        return;
-    }
-
-    /* Tri :
-       dossiers d'abord,
-       puis fichiers PDF
-    */
-
-    data.sort((a,b) => {
-
-        if(a.type !== b.type){
-            return a.type === "dir" ? -1 : 1;
+            if (pathParts.length > 1) {
+                // C'est un sous-dossier à afficher
+                subDirs.add(pathParts[0]);
+            } else if (pathParts.length === 1 && filePath.toLowerCase().endsWith(".pdf")) {
+                // C'est un PDF direct du dossier actuel
+                pdfsInDir.push(item);
+            }
         }
-
-        return a.name.localeCompare(
-            b.name,
-            "fr",
-            {numeric:true}
-        );
-
     });
 
     let found = false;
 
-    data.forEach(item => {
+    // 1. Afficher les sous-dossiers
+    Array.from(subDirs).sort().forEach(dirName => {
+        found = true;
+        const div = document.createElement("div");
+        div.className = "item";
+        const a = document.createElement("a");
+        a.href = "documents.html?path=" + encodeURIComponent(currentPath + "/" + dirName);
+        a.textContent = "📁 " + dirName;
+        div.appendChild(a);
+        content.appendChild(div);
+    });
 
-        /* Dossier */
-
-        if(item.type === "dir"){
-
-            found = true;
-
-            const div =
-                document.createElement("div");
-
-            div.className = "item";
-
-            const a =
-                document.createElement("a");
-
-            a.href =
-                "documents.html?path=" +
-                encodeURIComponent(item.path);
-
-            a.textContent =
-                "📁 " + item.name;
-
-            div.appendChild(a);
-
-            content.appendChild(div);
-        }
-
-        /* PDF */
-
-        else if(
-            item.type === "file" &&
-            item.name.toLowerCase().endsWith(".pdf")
-        ){
-
-            found = true;
-
-            const div =
-                document.createElement("div");
-
-            div.className = "item";
-
-            const a =
-                document.createElement("a");
-
-            /*
-             * URL du fichier sur GitHub Pages
-             */
-
-            a.href =
-                "./" +
-                item.path
-                    .split("/")
-                    .map(encodeURIComponent)
-                    .join("/");
-
-            a.target = "_blank";
-
-            a.rel = "noopener";
-
-            a.textContent =
-                "📄 " + item.name;
-
-            div.appendChild(a);
-
-            content.appendChild(div);
-        }
-
+    // 2. Afficher les fichiers PDF du dossier actuel
+    pdfsInDir.sort((a,b) => a.nom.localeCompare(b.nom, "fr", {numeric:true})).forEach(item => {
+        found = true;
+        const div = document.createElement("div");
+        div.className = "item";
+        const a = document.createElement("a");
+        
+        // Construction de l'URL propre pour GitHub Pages
+        a.href = "./" + item.fichier.split("/").map(encodeURIComponent).join("/");
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = "📄 " + item.nom;
+        
+        div.appendChild(a);
+        content.appendChild(div);
     });
 
     if(!found){
-
-        content.innerHTML =
-            "<div class='error'>" +
-            "Aucun document PDF dans ce dossier." +
-            "</div>";
+        content.innerHTML = "<div class='error'>Aucun document ou sous-dossier ici.</div>";
     }
-
 })
-
 .catch(error => {
-
     document.getElementById("content").innerHTML =
-
-        "<div class='error'>" +
-
-        "<strong>Impossible de charger les documents.</strong><br><br>" +
-
-        error.message +
-
-        "<br><br>" +
-
-        "Vérifiez que le dépôt GitHub est public et que le dossier existe." +
-
-        "</div>";
-
+        "<div class='error'><strong>Impossible de charger les documents.</strong><br><br>" +
+        error.message + "<br><br>Vérifiez que l'Action GitHub a bien fonctionné au moins une fois pour générer le fichier documents.json.</div>";
 });
-
 </script>
-
 </body>
 </html>
