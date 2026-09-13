@@ -229,79 +229,100 @@
             <a class="btn-accéder" href="documents.html?path=pdf/tp" style="margin-top: 15px; display: inline-block;">Accéder aux TP →</a>
         </div>
 
-     <!-- Bloc TIPE Seul -->
-
+   <!-- Bloc TIPE Seul -->
 <div class="card">
-
-    <details>
-
-        <!-- Ce qui reste visible en permanence et sert de bouton d'ouverture -->
-
-        <summary style="cursor: pointer; list-style: none; outline: none;">
-
-            <h4 style="display: inline-block; margin: 0;">💡 TIPE</h4>
-
-        </summary>
-
-
-
-        <!-- Tout ce contenu sera masqué et apparaîtra au clic -->
-
-        <div class="content-tipe" style="margin-top: 10px;">
-
-            <span style="font-size: 0.9rem; color: #657381;">Travaux d'initiatives personnelles encadrés.</span><br>
-
-            <a class="btn-accéder" href="documents.html?path=pdf/tipe" style="margin-top: 15px; display: inline-block;">Accéder aux TIPE →</a>
-
-       
-
-            <h4>Thème 2026-2027</h4>
-
-
-
-            <p>Sobriété, efficacité, optimisation</p>
-
-            
-
-            <p>Quelques liens pour vous aider dans vos recherches de TIPE.</p>
-
-            
-
-            <ul> 
-
-                <li><a href="#" target="_blank"> Forum des prépas (UPS) pour le TIPE </a></li> 
-
-                <li><a href="#" target="_blank"> Olympiades de physique </a><span> (site mal foutu, il vaut mieux faire une recherche Google) </span></li> 
-
-                <li><a href="#" target="_blank"> Annuaire des BUP </a></li> 
-
-                <li><a href="#" target="_blank"> Le site de Sciences Interstices </a></li> 
-
-                <li><a href="#" target="_blank"> Le site de Reflets de la physique </a></li> 
-
-                <li><a href="#" target="_blank"> Le site de Pour la Science </a></li> 
-
-                <li><a href="#" target="_blank"> European Physical Journal </a></li> 
-
-                <li><a href="#" target="_blank"> Le site Fuscia </a></li> 
-
-                <li><a href="#" target="_blank"> Le forum Futura </a></li> 
-
-                <li><a href="#" target="_blank"> Le site SCEI avec plein d'ADS </a></li> 
-
-                <li><a href="#" target="_blank"> Moteur de recherche scientifique </a></li> 
-
-                <li><a href="#" target="_blank"> Google Education </a></li> 
-
-                <li><a href="#" target="_blank"> Thèses en ligne </a></li> 
-
-            </ul>
-
-        </div>
-
-    </details>   
-
+    <h4>💡 TIPE</h4>
+    <span style="font-size: 0.9rem; color: #657381;">Travaux d'initiatives personnelles encadrés.</span><br>
+    
+    <!-- Bouton qui ouvre la modale via l'ancre #open-tipe -->
+    <a class="btn-accéder" href="#open-tipe" style="margin-top: 15px; display: inline-block; text-decoration: none;">Accéder aux TIPE →</a>
 </div>
+
+<!-- Structure de la Fenêtre Modale (Popup) -->
+<div id="open-tipe" class="modal-overlay">
+    <div class="modal-box card">
+        <!-- Bouton Fermer -->
+        <a href="#" class="modal-close">&times;</a>
+        
+        <!-- Contenu à l'intérieur du bloc -->
+        <h4>💡 TIPE</h4>
+        <span style="font-size: 0.9rem; color: #657381;">Travaux d'initiatives personnelles encadrés.</span>
+        
+        <h4 style="margin-top: 20px;">Thème 2026-2027</h4>
+        <p>Sobriété, efficacité, optimisation</p>
+        
+        <p>Quelques liens pour vous aider dans vos recherches de TIPE.</p>
+        
+        <ul> 
+            <li><a href="#" target="_blank"> Forum des prépas (UPS) pour le TIPE </a></li> 
+            <li><a href="#" target="_blank"> Olympiades de physique </a><span> (site mal foutu, il vaut mieux faire une recherche Google) </span></li> 
+            <li><a href="#" target="_blank"> Annuaire des BUP </a></li> 
+            <li><a href="#" target="_blank"> Le site de Sciences Interstices </a></li> 
+            <li><a href="#" target="_blank"> Le site de Reflets de la physique </a></li> 
+            <li><a href="#" target="_blank"> Le site de Pour la Science </a></li> 
+            <li><a href="#" target="_blank"> European Physical Journal </a></li> 
+            <li><a href="#" target="_blank"> Le site Fuscia </a></li> 
+            <li><a href="#" target="_blank"> Le forum Futura </a></li> 
+            <li><a href="#" target="_blank"> Le site SCEI avec plein d'ADS </a></li> 
+            <li><a href="#" target="_blank"> Moteur de recherche scientifique </a></li> 
+            <li><a href="#" target="_blank"> Google Education </a></li> 
+            <li><a href="#" target="_blank"> Thèses en ligne </a></li> 
+        </ul>
+    </div>
+</div>
+
+<!-- Styles CSS nécessaires pour le comportement de la modale (à mettre dans votre fichier .css ou entre des balises <style>) -->
+<style>
+/* L'arrière-plan sombre qui couvre toute la page, masqué par défaut */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Affiche la modale lorsque l'ancre #open-tipe est active */
+.modal-overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* La boîte blanche contenant le texte (reprend le style de vos .card) */
+.modal-box {
+    background: #ffffff;
+    padding: 25px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Le bouton de fermeture (la croix) */
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: #657381;
+    text-decoration: none;
+}
+.modal-close:hover {
+    color: #000;
+}
+</style>
+
     <!-- SECTION CONCOURS ÉLARGIE -->
     <div class="card" style="margin-bottom: 30px;">
         <h4 style="font-size: 1.3rem;">🏆 Concours (Annales et Corrigés)</h4>
