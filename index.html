@@ -229,112 +229,71 @@
             <a class="btn-accéder" href="documents.html?path=pdf/tp" style="margin-top: 15px; display: inline-block;">Accéder aux TP →</a>
         </div>
 
-
-<!-- Bloc TIPE Seul réintégré dans le système de cartes -->
+<!-- Bloc TIPE complet et fonctionnel -->
 <div class="card">
     <h4>💡 TIPE</h4>
     <span style="font-size: 0.9rem; color: #657381;">Travaux d'initiatives personnelles encadrés.</span><br>
-    <a class="btn-accéder" href="documents.html?path=pdf/tipe" style="margin-top: 15px; display: inline-block;">Accéder aux TIPE →</a>
 
-    <h4>Thème 2026-2027</h4>
-    <p>Sobriété, efficacité, optimisation</p>
-    
-    <p>Quelques liens pour vous aider dans vos recherches de TIPE.</p>
-    
-    <ul> 
-        <li>
-            <a href="https://prepas.org/ups.php?rubrique=35" target="_blank">Forum des prépas (UPS) pour le TIPE</a>
-        </li> 
-        <li>
-            <a href="https://www.education.gouv.fr/les-olympiades-nationales-et-internationales-de-physique-465963" target="_blank">Olympiades de physique</a> 
-            <span> (site mal foutu, il vaut mieux faire une recherche Google) </span>
-        </li> 
-        <li>
-            <a href="https://www.udppc.asso.fr/le-bup" target="_blank">Annuaire des BUP</a>
-        </li> 
-        <li>
-            <a href="https://interstices.info/" target="_blank">Le site de Sciences Interstices</a>
-        </li> 
-        <li>
-            <a href="https://refletsdelaphysique.fr" target="_blank">Le site de Reflets de la physique</a> 
-        </li> 
-        <li>
-            <a href="https://pourlascience.fr" target="_blank">Le site de Pour la Science</a>
-        </li> 
-        <li>
-            <a href="https://epj.org" target="_blank">European Physical Journal</a> 
-        </li> 
-        <li>
-            <a href="https://inria.fr" target="_blank">Le site Fuscia</a> 
-        </li> 
-        <li>
-            <a href="https://futura-sciences.com" target="_blank">Le forum Futura</a>
-        </li> 
-        <li>
-            <a href="https://scei-concours.fr" target="_blank">Le site SCEI avec plein d'ADS</a>
-        </li> 
-        <li>
-            <a href="https://google.fr" target="_blank">Moteur de recherche scientifique</a> 
-        </li> 
-        <li>
-            <a href="https://google.com" target="_blank">Google Education</a>
-        </li> 
-        <li>
-            <a href="https://theses.fr" target="_blank">Thèses en ligne</a> 
-        </li> 
-    </ul> 
+    <!-- Menu déroulant natif -->
+    <details style="margin-top: 15px;">
+        <!-- Bouton déclencheur -->
+        <summary class="btn-accéder" style="display: inline-block; cursor: pointer; outline: none; list-style: none;">
+            Accéder aux TIPE →
+        </summary>
+
+        <!-- Contenu masqué affiché au clic -->
+        <div class="content-tipe" style="margin-top: 20px; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+            <h4>Thème 2026-2027</h4>
+            <p><strong>Sobriété, efficacité, optimisation</strong></p>
+            
+            <p style="color: #657381;">Quelques liens pour vous aider dans vos recherches de TIPE :</p>
+            
+            <ul style="line-height: 1.8;"> 
+                <li>
+                    <a href="https://prepas.org" target="_blank">Forum des prépas (UPS) pour le TIPE</a>
+                </li> 
+                <li>
+                    <a href="https://google.com" target="_blank">Olympiades de physique</a> 
+                    <span style="font-size: 0.85rem; color: #657381;">(site mal foutu, il vaut mieux faire une recherche Google)</span>
+                </li> 
+                <li>
+                    <a href="https://udppc.asso.fr" target="_blank">Annuaire des BUP</a>
+                </li> 
+                <li>
+                    <a href="https://interstices.info" target="_blank">Le site de Sciences Interstices</a>
+                </li> 
+                <li>
+                    <a href="https://refletsdelaphysique.fr" target="_blank">Le site de Reflets de la physique</a> 
+                </li> 
+                <li>
+                    <a href="https://pourlascience.fr" target="_blank">Le site de Pour la Science</a>
+                </li> 
+                <li>
+                    <a href="https://epj.org" target="_blank">European Physical Journal</a> 
+                </li> 
+                <li>
+                    <a href="http://fuscia.info" target="_blank">Le site Fuscia</a> 
+                </li> 
+                <li>
+                    <a href="https://futura-sciences.com" target="_blank">Le forum Futura</a>
+                </li> 
+                <li>
+                    <a href="https://scei-concours.fr" target="_blank">Le site SCEI avec plein d'ADS</a>
+                </li> 
+                <li>
+                    <a href="https://google.fr" target="_blank">Moteur de recherche scientifique</a> 
+                </li> 
+                <li>
+                    <a href="https://google.com" target="_blank">Google Education</a>
+                </li> 
+                <li>
+                    <a href="https://archive-ouvertes.fr" target="_blank">Thèses en ligne</a> 
+                </li> 
+            </ul> 
+        </div>
+    </details>
 </div>
-<!-- Styles CSS nécessaires pour le comportement de la modale (à mettre dans votre fichier .css ou entre des balises <style>) -->
-<style>
-/* L'arrière-plan sombre qui couvre toute la page, masqué par défaut */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-/* Affiche la modale lorsque l'ancre #open-tipe est active */
-.modal-overlay:target {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* La boîte blanche contenant le texte (reprend le style de vos .card) */
-.modal-box {
-    background: #ffffff;
-    padding: 25px;
-    max-width: 600px;
-    width: 90%;
-    max-height: 85vh;
-    overflow-y: auto;
-    position: relative;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-/* Le bouton de fermeture (la croix) */
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    color: #657381;
-    text-decoration: none;
-}
-.modal-close:hover {
-    color: #000;
-}
-</style>
    </div>
 
 </div>
