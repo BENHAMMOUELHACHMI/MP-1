@@ -142,6 +142,44 @@
         <a href="mailto:votre.email@email.com" style="color: #17324d; font-weight: bold; text-decoration: underline;">elhachmibenhammou90@gmail.com</a>
     </p>
 </div>
+<!-- Style CSS pour l'animation de l'étoile brillante -->
+<style>
+@keyframes scintillement {
+  0% { transform: scale(1); opacity: 0.4; filter: drop-shadow(0 0 2px #ffd700); }
+  50% { transform: scale(1.2); opacity: 1; filter: drop-shadow(0 0 10px #ffd700); }
+  100% { transform: scale(1); opacity: 0.4; filter: drop-shadow(0 0 2px #ffd700); }
+}
+.etoile-animee {
+  display: inline-block;
+  animation: scintillement 1.5s infinite ease-in-out;
+  color: #ffd700; /* Couleur dorée */
+  margin-right: 5px;
+}
+.badge-new {
+  background-color: #dc3545; 
+  color: white; 
+  padding: 3px 8px; 
+  border-radius: 4px; 
+  font-size: 0.9em;
+  margin-right: 10px;
+}
+.bandeau-alerte {
+  background-color: #fff8e1; 
+  color: #5d4037; 
+  padding: 12px; 
+  text-align: center; 
+  font-weight: bold; 
+  border-bottom: 2px solid #ffe082; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+</style>
+
+<!-- Le bandeau d'annonce avec l'étoile en mouvement -->
+<div class="bandeau-alerte">
+    <span class="etoile-animee">✨</span>
+    <span class="badge-new">NEW</span> 
+    Les nouveaux documents de préparation aux concours sont en ligne !
+</div>
 
 <h3 class="section-title">📚 Ressources Pédagogiques</h3>
 
