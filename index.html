@@ -131,44 +131,78 @@
             "Chers étudiants, bienvenue sur votre plateforme de travail. Le chemin de la réussite aux concours exige de la rigueur, de la persévérance et une régularité quotidienne dans l'effort. Ce site est conçu pour vous accompagner pas à pas. Donnez-vous les moyens de vos ambitions, croyez en votre potentiel, car chaque exercice résolu vous rapproche de votre objectif. Bon courage à tous !"
         </p>
     </div>
-<!-- Style CSS pour l'animation de l'étoile brillante -->
+<!-- Styles pour les animations du bandeau défilant cinématographique -->
 <style>
+/* 1. Animation de défilement du message de droite à gauche */
+@keyframes defilement {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* 2. Animation de scintillement de l'étoile dorée */
 @keyframes scintillement {
-  0% { transform: scale(1); opacity: 0.4; filter: drop-shadow(0 0 2px #ffd700); }
-  50% { transform: scale(1.2); opacity: 1; filter: drop-shadow(0 0 10px #ffd700); }
-  100% { transform: scale(1); opacity: 0.4; filter: drop-shadow(0 0 2px #ffd700); }
+  0% { transform: scale(1); opacity: 0.5; filter: drop-shadow(0 0 2px #ffd700); }
+  50% { transform: scale(1.3); opacity: 1; filter: drop-shadow(0 0 12px #ffd700); }
+  100% { transform: scale(1); opacity: 0.5; filter: drop-shadow(0 0 2px #ffd700); }
 }
-.etoile-animee {
+
+/* Conteneur principal masquant ce qui dépasse de l'écran */
+.zone-defilante {
+  background-color: #111111; /* Fond noir style cinéma / tableau d'affichage */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 2px solid #ffd700; /* Ligne dorée de séparation */
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Texte qui bouge */
+.message-en-mouvement {
   display: inline-block;
-  animation: scintillement 1.5s infinite ease-in-out;
-  color: #ffd700; /* Couleur dorée */
-  margin-right: 5px;
+  white-space: nowrap;
+  padding-left: 100%;
+  animation: defilement 20s linear infinite; /* 20 secondes pour traverser l'écran */
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.1em;
 }
-.badge-new {
-  background-color: #dc3545; 
-  color: white; 
-  padding: 3px 8px; 
-  border-radius: 4px; 
-  font-size: 0.9em;
+
+/* L'étoile animée */
+.etoile-brillante {
+  display: inline-block;
+  animation: scintillement 1.2s infinite ease-in-out;
+  color: #ffd700;
+  margin: 0 8px;
+}
+
+/* Badge NEW stylisé */
+.badge-new-flash {
+  background-color: #dc3545;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
   margin-right: 10px;
+  box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
 }
-.bandeau-alerte {
-  background-color: #fff8e1; 
-  color: #5d4037; 
-  padding: 12px; 
-  text-align: center; 
-  font-weight: bold; 
-  border-bottom: 2px solid #ffe082; 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+/* Optionnel : Met en pause le défilement si l'étudiant passe la souris dessus */
+.zone-defilante:hover .message-en-mouvement {
+  animation-play-state: paused;
 }
 </style>
 
-<!-- Le bandeau d'annonce avec l'étoile en mouvement -->
-<div class="bandeau-alerte">
-    <span class="etoile-animee">✨</span>
-    <span class="badge-new">NEW</span> 
-    Les nouveaux documents de préparation aux concours sont en ligne !
+<!-- Structure du bandeau à insérer -->
+<div class="zone-defilante">
+  <div class="message-en-mouvement">
+    <span class="etoile-brillante">✨</span>
+    <span class="badge-new-flash">NEW</span> 
+    Les nouveaux documents pédagogiques, exercices de révision et sujets de concours MP-1 sont disponibles sur la plateforme ! Bonne rentrée et bon courage à tous !
+    <span class="etoile-brillante">✨</span>
+  </div>
 </div>
+
     <!-- Section Contact Assistance -->
 <div style="background: #fff8f8; border: 1px dashed #c62828; padding: 15px; margin: 30px auto 10px auto; border-radius: 6px; max-width: 700px; text-align: center;">
     <p style="margin: 0; color: #c62828; font-weight: bold; font-size: 0.95rem;">
