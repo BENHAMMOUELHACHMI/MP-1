@@ -17,7 +17,7 @@ h2{color:#17324d;}
 .error{background:white;border-left:4px solid #c62828;padding:20px;}
 footer{text-align:center;color:#657381;padding:30px;}
 
-/* NOUVEAU : Style de la zone de message d'encouragement */
+/* Style de la zone de message d'encouragement */
 .message-encouragement {
     font-size: 1.1rem;
     font-weight: bold;
@@ -28,7 +28,7 @@ footer{text-align:center;color:#657381;padding:30px;}
     padding: 12px 20px;
     border-radius: 6px;
     margin-bottom: 15px;
-    display: none; /* Masqué au départ, s'affichera au clic */
+    display: none; /* Masqué au départ, s'affiche au clic */
 }
 </style>
 </head>
@@ -43,7 +43,7 @@ footer{text-align:center;color:#657381;padding:30px;}
 <h2 id="title">Documents</h2>
 <div id="path"></div>
 
-<!-- NOUVEAU : Ajout de la zone où le message d'encouragement va s'afficher -->
+<!-- Zone de notification d'encouragement insérée au bon endroit -->
 <div id="zone-message" class="message-encouragement"></div>
 
 <div id="content">Chargement...</div>
@@ -89,7 +89,7 @@ function afficherEncouragement() {
     }
 }
 
-// On charge directement le fichier JSON généré par votre script automatique
+// Chargement du fichier JSON généré par votre script automatique
 fetch("./documents.json")
 .then(response => {
     if(!response.ok) throw new Error("Le fichier de données documents.json est introuvable à la racine.");
@@ -110,6 +110,7 @@ fetch("./documents.json")
             const pathParts = relativePart.split("/");
 
             if (pathParts.length > 1) {
+                // CORRIGÉ : On stocke la chaîne de caractères du premier sous-dossier trouvé
                 subDirs.add(pathParts[0]);
             } else if (pathParts.length === 1 && filePath.toLowerCase().endsWith(".pdf")) {
                 pdfsInDir.push(item);
@@ -128,7 +129,7 @@ fetch("./documents.json")
         a.href = "documents.html?path=" + encodeURIComponent(currentPath + "/" + dirName);
         a.textContent = "📁 " + dirName;
         
-        // MODIFICATION : Déclenche le message d'encouragement au clic sur un dossier
+        // Déclenche le message d'encouragement au clic sur un dossier
         a.addEventListener('click', afficherEncouragement);
         
         div.appendChild(a);
@@ -147,7 +148,7 @@ fetch("./documents.json")
         a.rel = "noopener";
         a.textContent = "📄 " + item.nom;
         
-        // MODIFICATION : Déclenche le message d'encouragement au clic sur un PDF
+        // Déclenche le message d'encouragement au clic sur un PDF
         a.addEventListener('click', afficherEncouragement);
         
         div.appendChild(a);
@@ -166,4 +167,5 @@ fetch("./documents.json")
 </script>
 </body>
 </html>
+
 
