@@ -17,7 +17,7 @@ h2{color:#17324d;}
 .error{background:white;border-left:4px solid #c62828;padding:20px;}
 footer{text-align:center;color:#657381;padding:30px;}
 
-/* Style de la zone de message d'encouragement */
+/* Style pour la boîte d'encouragement */
 .message-encouragement {
     font-size: 1.1rem;
     font-weight: bold;
@@ -28,7 +28,7 @@ footer{text-align:center;color:#657381;padding:30px;}
     padding: 12px 20px;
     border-radius: 6px;
     margin-bottom: 15px;
-    display: none; /* Masqué au départ, s'affiche au clic */
+    display: none; /* Masqué par défaut */
 }
 </style>
 </head>
@@ -43,7 +43,7 @@ footer{text-align:center;color:#657381;padding:30px;}
 <h2 id="title">Documents</h2>
 <div id="path"></div>
 
-<!-- Zone de notification d'encouragement insérée au bon endroit -->
+<!-- Zone de notification pour vos élèves -->
 <div id="zone-message" class="message-encouragement"></div>
 
 <div id="content">Chargement...</div>
@@ -89,7 +89,7 @@ function afficherEncouragement() {
     }
 }
 
-// Chargement du fichier JSON généré par votre script automatique
+// Chargement directement depuis votre documents.json automatique
 fetch("./documents.json")
 .then(response => {
     if(!response.ok) throw new Error("Le fichier de données documents.json est introuvable à la racine.");
@@ -110,7 +110,7 @@ fetch("./documents.json")
             const pathParts = relativePart.split("/");
 
             if (pathParts.length > 1) {
-                // CORRIGÉ : On stocke la chaîne de caractères du premier sous-dossier trouvé
+                // RESTAURÉ : Récupération stricte du premier élément comme dans votre code initial
                 subDirs.add(pathParts[0]);
             } else if (pathParts.length === 1 && filePath.toLowerCase().endsWith(".pdf")) {
                 pdfsInDir.push(item);
@@ -120,7 +120,7 @@ fetch("./documents.json")
 
     let found = false;
 
-    // 1. Afficher les sous-dossiers
+    // 1. Affichage des sous-dossiers
     Array.from(subDirs).sort().forEach(dirName => {
         found = true;
         const div = document.createElement("div");
@@ -129,14 +129,14 @@ fetch("./documents.json")
         a.href = "documents.html?path=" + encodeURIComponent(currentPath + "/" + dirName);
         a.textContent = "📁 " + dirName;
         
-        // Déclenche le message d'encouragement au clic sur un dossier
+        // Déclencheur au clic sur un dossier
         a.addEventListener('click', afficherEncouragement);
         
         div.appendChild(a);
         content.appendChild(div);
     });
 
-    // 2. Afficher les fichiers PDF du dossier actuel
+    // 2. Affichage des fichiers PDF
     pdfsInDir.sort((a,b) => a.nom.localeCompare(b.nom, "fr", {numeric:true})).forEach(item => {
         found = true;
         const div = document.createElement("div");
@@ -148,7 +148,7 @@ fetch("./documents.json")
         a.rel = "noopener";
         a.textContent = "📄 " + item.nom;
         
-        // Déclenche le message d'encouragement au clic sur un PDF
+        // Déclencheur au clic sur un PDF
         a.addEventListener('click', afficherEncouragement);
         
         div.appendChild(a);
@@ -167,5 +167,6 @@ fetch("./documents.json")
 </script>
 </body>
 </html>
+
 
 
