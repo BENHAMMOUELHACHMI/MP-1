@@ -16,6 +16,20 @@ h2{color:#17324d;}
 .item a{text-decoration:none;color:#24577a;font-weight:bold;}
 .error{background:white;border-left:4px solid #c62828;padding:20px;}
 footer{text-align:center;color:#657381;padding:30px;}
+
+/* NOUVEAU : Style de la zone de message d'encouragement */
+.message-encouragement {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1e3a8a; 
+    background-color: #eff6ff; 
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid #3b82f6;
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    display: none; /* Masqué au départ, s'affichera au clic */
+}
 </style>
 </head>
 <body>
@@ -28,6 +42,10 @@ footer{text-align:center;color:#657381;padding:30px;}
 <a class="back" href="index.html">← Retour au site</a>
 <h2 id="title">Documents</h2>
 <div id="path"></div>
+
+<!-- NOUVEAU : Ajout de la zone où le message d'encouragement va s'afficher -->
+<div id="zone-message" class="message-encouragement"></div>
+
 <div id="content">Chargement...</div>
 </main>
 
@@ -46,6 +64,31 @@ document.getElementById("path").textContent = "Dossier : " + currentPath;
 const parts = currentPath.split("/");
 document.getElementById("title").textContent = parts[parts.length - 1].replace(/[-_]/g, " ");
 
+// Banque de messages stimulants pour vos étudiants de CPGE
+const messages = [
+    "💪 Excellent choix ! La persévérance est la clé du succès en CPGE.",
+    "🌟 Bravo pour votre curiosité scientifique, continuez ainsi !",
+    "🚀 Cap sur la réussite ! Vous avancez à grands pas.",
+    "📚 Chaque notion étudiée aujourd'hui construit votre réussite aux concours !",
+    "🧠 Les sciences physiques n'attendent que votre logique !",
+    "🎯 Restez régulier dans vos efforts, le travail paie toujours !"
+];
+
+// Fonction pour afficher un message aléatoire au-dessus
+function afficherEncouragement() {
+    const zoneMessage = document.getElementById('zone-message');
+    if (zoneMessage) {
+        const messageAleatoire = messages[Math.floor(Math.random() * messages.length)];
+        zoneMessage.textContent = messageAleatoire;
+        zoneMessage.style.display = 'block';
+        
+        // Fermeture automatique du message après 4 secondes
+        setTimeout(() => {
+            zoneMessage.style.display = 'none';
+        }, 4000);
+    }
+}
+
 // On charge directement le fichier JSON généré par votre script automatique
 fetch("./documents.json")
 .then(response => {
@@ -60,17 +103,15 @@ fetch("./documents.json")
     const pdfsInDir = [];
 
     allFiles.forEach(item => {
-        const filePath = item.fichier; // Ex: pdf/concours/ccp-ccinp/physique/cours1.pdf
+        const filePath = item.fichier; 
         
         if (filePath.startsWith(currentPath + "/")) {
             const relativePart = filePath.substring(currentPath.length + 1);
             const pathParts = relativePart.split("/");
 
             if (pathParts.length > 1) {
-                // C'est un sous-dossier à afficher
                 subDirs.add(pathParts[0]);
             } else if (pathParts.length === 1 && filePath.toLowerCase().endsWith(".pdf")) {
-                // C'est un PDF direct du dossier actuel
                 pdfsInDir.push(item);
             }
         }
@@ -86,6 +127,10 @@ fetch("./documents.json")
         const a = document.createElement("a");
         a.href = "documents.html?path=" + encodeURIComponent(currentPath + "/" + dirName);
         a.textContent = "📁 " + dirName;
+        
+        // MODIFICATION : Déclenche le message d'encouragement au clic sur un dossier
+        a.addEventListener('click', afficherEncouragement);
+        
         div.appendChild(a);
         content.appendChild(div);
     });
@@ -97,11 +142,13 @@ fetch("./documents.json")
         div.className = "item";
         const a = document.createElement("a");
         
-        // Construction de l'URL propre pour GitHub Pages
         a.href = "./" + item.fichier.split("/").map(encodeURIComponent).join("/");
         a.target = "_blank";
         a.rel = "noopener";
         a.textContent = "📄 " + item.nom;
+        
+        // MODIFICATION : Déclenche le message d'encouragement au clic sur un PDF
+        a.addEventListener('click', afficherEncouragement);
         
         div.appendChild(a);
         content.appendChild(div);
@@ -117,40 +164,6 @@ fetch("./documents.json")
         error.message + "<br><br>Vérifiez que l'Action GitHub a bien fonctionné au moins une fois pour générer le fichier documents.json.</div>";
 });
 </script>
-    <!-- SCRIPT JAVASCRIPT LOGIQUE ET DYNAMIQUE -->
-    <script>
-        // Banque de messages stimulants pour vos étudiants
-        const messages = [
-            "💪 Excellent choix ! La persévérance est la clé du succès.",
-            "🌟 Bravo pour votre curiosité scientifique, continuez ainsi !",
-            "🚀 Cap sur la réussite ! Vous avancez à grands pas.",
-            "📚 Chaque notion étudiée aujourd'hui construira votre réussite de demain !",
-            "🧠 Les sciences physiques n'attendent que votre logique !",
-            "🎯 Restez régulier dans vos efforts, le travail paie toujours !"
-        ];
-
-        // Ciblage de la zone d'affichage unique
-        const zoneMessage = document.getElementById('zone-message');
-        
-        // Sélection de TOUS les éléments ayant la classe "lien-physique"
-        const liensPhysique = document.querySelectorAll('.lien-physique');
-
-        // Application de l'événement à chaque élément de la liste
-        liensPhysique.forEach(lien => {
-            lien.addEventListener('click', () => {
-                // Sélection aléatoire d'un message
-                const messageAleatoire = messages[Math.floor(Math.random() * messages.length)];
-                
-                // Insertion du texte et apparition du conteneur au-dessus
-                zoneMessage.textContent = messageAleatoire;
-                zoneMessage.style.display = 'block';
-                
-                // Fermeture automatique du message après 4 secondes
-                setTimeout(() => {
-                    zoneMessage.style.display = 'none';
-                }, 4000);
-            });
-        });
-    </script>
-    </body>
+</body>
 </html>
+
