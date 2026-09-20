@@ -110,8 +110,10 @@ fetch("./documents.json")
             const pathParts = relativePart.split("/");
 
             if (pathParts.length > 1) {
-                // RECTIFIÉ : Ajout strict du premier élément textuel [0] pour éviter le plantage
-                subDirs.add(pathParts[0]);
+                // Modification de sécurité pour éviter le bug d'affichage de l'IA :
+                // On extrait proprement le nom du dossier sans utiliser les crochets [0]
+                const premierDossier = pathParts.shift();
+                subDirs.add(premierDossier);
             } else if (pathParts.length === 1 && filePath.toLowerCase().endsWith(".pdf")) {
                 pdfsInDir.push(item);
             }
@@ -167,6 +169,7 @@ fetch("./documents.json")
 </script>
 </body>
 </html>
+
 
 
 
