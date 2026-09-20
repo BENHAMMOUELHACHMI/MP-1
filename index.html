@@ -472,6 +472,39 @@
         </p>
     </div>
 </footer>
+<script>
+    // Liste de phrases pour redonner de l'énergie aux taupins
+    const phrasesEncouragement = [
+        "💪 Courage ! La régularité en CPGE est l'arme absolue de votre réussite.",
+        "🚀 Gardez le cap ! Chaque chapitre maîtrisé est un point de gagné aux concours.",
+        "🌟 Un travail de qualité mène toujours aux grandes écoles. Continuez ainsi !",
+        "🧠 Confiance et rigueur ! Vous avez les capacités pour décrocher vos objectifs.",
+        "📚 Le travail d'aujourd'hui construit les admissibilités de demain. Allez, on s'accroche !"
+    ];
+
+    // On sélectionne la boîte de message et tous les liens de cours
+    const zoneText = document.getElementById('zone-message');
+    const liens = document.querySelectorAll('.lien-cours');
+
+    // On applique l'événement sur chaque lien de la page
+    liens.forEach(lien => {
+        lien.addEventListener('click', (e) => {
+            // Sélection d'une phrase aléatoire dans le tableau
+            const hasard = phrasesEncouragement[Math.floor(Math.random() * phrasesEncouragement.length)];
+            
+            // On injecte le texte choisi et on rend la boîte visible
+            zoneText.textContent = hasard;
+            zoneText.style.display = 'block';
+
+            // Le message reste affiché pendant 4 secondes (4000 millisecondes)
+            setTimeout(() => {
+                zoneText.style.display = 'none';
+            }, 4000);
+        });
+    });
+</script>
+</body>
+</html>
 
 
 </body>
