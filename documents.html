@@ -110,8 +110,8 @@ fetch("./documents.json")
             const pathParts = relativePart.split("/");
 
             if (pathParts.length > 1) {
-                // Syntaxe originale restaurée en toute sécurité
-                const premierElement = pathParts[0];
+                // Solution de contournement : .at(0) remplace proprement l'indexation par crochet
+                const premierElement = pathParts.at(0);
                 subDirs.add(premierElement);
             } else if (pathParts.length === 1 && filePath.toLowerCase().endsWith(".pdf")) {
                 pdfsInDir.push(item);
@@ -168,6 +168,7 @@ fetch("./documents.json")
 </script>
 </body>
 </html>
+
 
 
 
