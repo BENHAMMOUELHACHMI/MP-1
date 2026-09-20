@@ -17,7 +17,7 @@ h2{color:#17324d;}
 .error{background:white;border-left:4px solid #c62828;padding:20px;}
 footer{text-align:center;color:#657381;padding:30px;}
 
-/* Style pour la boîte d'encouragement */
+/* Boîte d'encouragement */
 .message-encouragement {
     font-size: 1.1rem;
     font-weight: bold;
@@ -28,7 +28,7 @@ footer{text-align:center;color:#657381;padding:30px;}
     padding: 12px 20px;
     border-radius: 6px;
     margin-bottom: 15px;
-    display: none; /* Masqué au départ */
+    display: none; /* S'active au clic */
 }
 </style>
 </head>
@@ -57,7 +57,6 @@ Pr. Ag. E. BENHAMMOU · MP-1 — CPGE Laâyoune
 const params = new URLSearchParams(window.location.search);
 let currentPath = params.get("path") || "pdf";
 
-// Nettoyage et affichage du chemin
 currentPath = currentPath.replace(/^\/+|\/+$/g, "");
 document.getElementById("path").textContent = "Dossier : " + currentPath;
 
@@ -74,19 +73,33 @@ const messages = [
     "🎯 Restez régulier dans vos efforts, le travail paie toujours !"
 ];
 
-// Fonction pour afficher un message aléatoire au-dessus
-function afficherEncouragement() {
+// NOUVELLE LOGIQUE : Affiche le message, attend 1.5s puis ouvre le lien
+function gererClicLien(event) {
+    event.preventDefault(); // On bloque l'ouverture immédiate
+    
+    const urlCible = event.currentTarget.getAttribute('href');
+    const cibleTarget = event.currentTarget.getAttribute('target');
+    
     const zoneMessage = document.getElementById('zone-message');
     if (zoneMessage) {
         const messageAleatoire = messages[Math.floor(Math.random() * messages.length)];
         zoneMessage.textContent = messageAleatoire;
         zoneMessage.style.display = 'block';
-        
-        // Fermeture automatique du message après 4 secondes
-        setTimeout(() => {
-            zoneMessage.style.display = 'none';
-        }, 4000);
     }
+
+    // On laisse le message affiché 1,5 seconde (1500ms) pour que l'étudiant le lise, puis on ouvre le lien
+    setTimeout(() => {
+        if (cibleTarget === '_blank') {
+            window.open(urlCible, '_blank');
+        } else {
+            window.location.href = urlCible;
+        }
+        
+        // On cache le message après le départ
+        setTimeout(() => {
+            if(zoneMessage) zoneMessage.style.display = 'none';
+        }, 2000);
+    }, 1500);
 }
 
 // Chargement directement depuis votre documents.json automatique
@@ -110,7 +123,6 @@ fetch("./documents.json")
             const pathParts = relativePart.split("/");
 
             if (pathParts.length > 1) {
-                // Solution de contournement : .at(0) remplace proprement l'indexation par crochet
                 const premierElement = pathParts.at(0);
                 subDirs.add(premierElement);
             } else if (pathParts.length === 1 && filePath.toLowerCase().endsWith(".pdf")) {
@@ -130,8 +142,8 @@ fetch("./documents.json")
         a.href = "documents.html?path=" + encodeURIComponent(currentPath + "/" + dirName);
         a.textContent = "📁 " + dirName;
         
-        // Déclencheur au clic sur un dossier
-        a.addEventListener('click', afficherEncouragement);
+        // Applique la nouvelle logique avec délai au clic
+        a.addEventListener('click', gererClicLien);
         
         div.appendChild(a);
         content.appendChild(div);
@@ -149,8 +161,8 @@ fetch("./documents.json")
         a.rel = "noopener";
         a.textContent = "📄 " + item.nom;
         
-        // Déclencheur au clic sur un PDF
-        a.addEventListener('click', afficherEncouragement);
+        // Applique la nouvelle logique avec délai au clic
+        a.addEventListener('click', gererClicLien);
         
         div.appendChild(a);
         content.appendChild(div);
@@ -168,6 +180,7 @@ fetch("./documents.json")
 </script>
 </body>
 </html>
+
 
 
 
