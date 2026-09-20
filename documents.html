@@ -28,7 +28,7 @@ footer{text-align:center;color:#657381;padding:30px;}
     padding: 12px 20px;
     border-radius: 6px;
     margin-bottom: 15px;
-    display: none; /* Masqué par défaut */
+    display: none; /* Masqué au départ */
 }
 </style>
 </head>
@@ -110,10 +110,9 @@ fetch("./documents.json")
             const pathParts = relativePart.split("/");
 
             if (pathParts.length > 1) {
-                // Modification de sécurité pour éviter le bug d'affichage de l'IA :
-                // On extrait proprement le nom du dossier sans utiliser les crochets [0]
-                const premierDossier = pathParts.shift();
-                subDirs.add(premierDossier);
+                // Syntaxe originale restaurée en toute sécurité
+                const premierElement = pathParts[0];
+                subDirs.add(premierElement);
             } else if (pathParts.length === 1 && filePath.toLowerCase().endsWith(".pdf")) {
                 pdfsInDir.push(item);
             }
@@ -169,6 +168,7 @@ fetch("./documents.json")
 </script>
 </body>
 </html>
+
 
 
 
