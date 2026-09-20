@@ -131,52 +131,41 @@
             "Chers étudiants, bienvenue sur votre plateforme de travail. Le chemin de la réussite aux concours exige de la rigueur, de la persévérance et une régularité quotidienne dans l'effort. Ce site est conçu pour vous accompagner pas à pas. Donnez-vous les moyens de vos ambitions, croyez en votre potentiel, car chaque exercice résolu vous rapproche de votre objectif. Bon courage à tous !"
         </p>
     </div>
-<!-- Styles pour le bandeau d'information bleu à confort visuel -->
+<!-- 1. La section des styles (À laisser inchangée) -->
 <style>
-/* 1. Animation fluide de défilement de droite à gauche */
 @keyframes defilementModere {
-  0% { transform: translateX(0%); } /* Démarre instantanément visible à l'écran, sans retard */
+  0% { transform: translateX(0%); }
   100% { transform: translateX(-100%); }
 }
-
-/* 2. Animation de scintillement doux pour l'étoile */
 @keyframes scintillementDoux {
   0% { transform: scale(1); opacity: 0.6; filter: drop-shadow(0 0 1px #ffd700); }
   50% { transform: scale(1.2); opacity: 1; filter: drop-shadow(0 0 8px #ffd700); }
   100% { transform: scale(1); opacity: 0.6; filter: drop-shadow(0 0 1px #ffd700); }
 }
-
-/* Conteneur principal : Fond clair reposant et design soigné */
 .bandeau-confort {
-  background-color: #f4f7f6; /* Fond gris-blanc très doux pour les yeux */
+  background-color: #f4f7f6;
   overflow: hidden;
   position: relative;
   width: 100%;
   padding: 12px 0;
-  border-bottom: 2px solid #0056b3; /* Ligne fine bleue pour s'accorder à votre bannière */
+  border-bottom: 2px solid #0056b3;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-shadow: inset 0 -1px 3px rgba(0,0,0,0.05);
 }
-
-/* Zone de texte infinie pour éviter les coupures */
 .defilement-conteneur {
   display: flex;
   width: max-content;
-  animation: defilementModere 30s linear infinite; /* Vitesse modérée et relaxante */
+  animation: defilementModere 30s linear infinite;
 }
-
-/* Le message en bleu roi très lisible */
 .message-bleu {
-  color: #0056b3; /* Bleu roi haute lisibilité */
+  color: #0056b3;
   font-weight: bold;
   font-size: 1.1em;
   white-space: nowrap;
-  padding-right: 60px; /* Espace entre les répétitions du texte */
+  padding-right: 60px;
   display: flex;
   align-items: center;
 }
-
-/* L'étoile animée */
 .etoile-brillante {
   display: inline-block;
   animation: scintillementDoux 1.4s infinite ease-in-out;
@@ -184,8 +173,6 @@
   margin: 0 10px;
   font-size: 1.2em;
 }
-
-/* Badge NEW assorti */
 .badge-new-bleu {
   background-color: #dc3545;
   color: white;
@@ -194,23 +181,19 @@
   font-size: 0.85em;
   margin-right: 12px;
 }
-
-/* Sécurité : Met en pause le défilement si un étudiant survole le texte pour le lire */
 .bandeau-confort:hover .defilement-conteneur {
   animation-play-state: paused;
 }
 </style>
 
-<!-- Structure du bandeau optimisé -->
+<!-- 2. La structure de l'animation unique (Laisser uniquement ceci) -->
 <div class="bandeau-confort">
   <div class="defilement-conteneur">
-    <!-- Premier bloc de texte (visible de suite) -->
     <div class="message-bleu">
       <span class="etoile-brillante">✨</span>
       <span class="badge-new-bleu">NEW</span> 
       Les nouveaux documents pédagogiques, exercices et sujets de concours dédiés à la préparation des DS et des épreuves de la classe MP-1 sont disponibles sur la plateforme ! Bonne préparation à tous !
     </div>
-    <!-- Deuxième bloc identique pour assurer la continuité du défilement sans coupure -->
     <div class="message-bleu">
       <span class="etoile-brillante">✨</span>
       <span class="badge-new-bleu">NEW</span> 
@@ -218,6 +201,8 @@
     </div>
   </div>
 </div>
+<!-- FIN DU BLOC - N'ajoutez rien d'autre ici -->
+
 
     <!-- Section Contact Assistance -->
 <div style="background: #fff8f8; border: 1px dashed #c62828; padding: 15px; margin: 30px auto 10px auto; border-radius: 6px; max-width: 700px; text-align: center;">
