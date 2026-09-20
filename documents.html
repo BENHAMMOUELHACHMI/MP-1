@@ -117,5 +117,40 @@ fetch("./documents.json")
         error.message + "<br><br>Vérifiez que l'Action GitHub a bien fonctionné au moins une fois pour générer le fichier documents.json.</div>";
 });
 </script>
-</body>
+    <!-- SCRIPT JAVASCRIPT LOGIQUE ET DYNAMIQUE -->
+    <script>
+        // Banque de messages stimulants pour vos étudiants
+        const messages = [
+            "💪 Excellent choix ! La persévérance est la clé du succès.",
+            "🌟 Bravo pour votre curiosité scientifique, continuez ainsi !",
+            "🚀 Cap sur la réussite ! Vous avancez à grands pas.",
+            "📚 Chaque notion étudiée aujourd'hui construira votre réussite de demain !",
+            "🧠 Les sciences physiques n'attendent que votre logique !",
+            "🎯 Restez régulier dans vos efforts, le travail paie toujours !"
+        ];
+
+        // Ciblage de la zone d'affichage unique
+        const zoneMessage = document.getElementById('zone-message');
+        
+        // Sélection de TOUS les éléments ayant la classe "lien-physique"
+        const liensPhysique = document.querySelectorAll('.lien-physique');
+
+        // Application de l'événement à chaque élément de la liste
+        liensPhysique.forEach(lien => {
+            lien.addEventListener('click', () => {
+                // Sélection aléatoire d'un message
+                const messageAleatoire = messages[Math.floor(Math.random() * messages.length)];
+                
+                // Insertion du texte et apparition du conteneur au-dessus
+                zoneMessage.textContent = messageAleatoire;
+                zoneMessage.style.display = 'block';
+                
+                // Fermeture automatique du message après 4 secondes
+                setTimeout(() => {
+                    zoneMessage.style.display = 'none';
+                }, 4000);
+            });
+        });
+    </script>
+    </body>
 </html>
