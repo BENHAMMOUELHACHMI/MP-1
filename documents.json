@@ -144,6 +144,18 @@
     "fichier": "pdf/td/physique/electronique/TD1.éléments de correction.pdf"
   },
   {
+    "nom": "DOT.Exemplaire.pdf",
+    "fichier": "pdf/tipe/DOT.Exemplaire.pdf"
+  },
+  {
+    "nom": "MCOT.Exemplaire.pdf",
+    "fichier": "pdf/tipe/MCOT.Exemplaire.pdf"
+  },
+  {
+    "nom": "Présentation TIPE 2026.pdf",
+    "fichier": "pdf/tipe/Présentation TIPE 2026.pdf"
+  },
+  {
     "nom": "TP.Echantillonnage.pdf",
     "fichier": "pdf/tp/TP.Echantillonnage.pdf"
   },
