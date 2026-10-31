@@ -119,10 +119,20 @@ header {
         ),
         url("images/lycee-cpge.png.PNG");
 
-    background-size: contain;
-background-position: center;
-background-repeat: no-repeat;
-background-color: #183650;
+    /* MODIFICATIONS CLÉS POUR ÉTENDRE L'IMAGE ET L'ÉCRITURE */
+    background-size: cover;       /* L'image s'étire désormais sur TOUTE la largeur de la bande */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #183650;
+
+    /* Force la bande à faire 100% de l'écran même si le thème GitHub la bloque */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    box-sizing: border-box;
 
     min-height: 220px;
     display: flex;
@@ -131,7 +141,7 @@ background-color: #183650;
     align-items: center;
     text-align: center;
 
-    padding: 25px 15px;
+    padding: 25px 20px; /* Un peu plus d'espace sur les côtés pour l'écriture */
     color: white;
 }
 
@@ -141,6 +151,8 @@ header h1 {
     font-size: 32px;
     font-weight: bold;
     text-shadow: 2px 2px 5px black;
+    margin: 0 0 10px 0; /* Évite les décalages */
+    width: 100%;        /* Permet à l'écriture d'occuper l'espace disponible */
 }
 
 /* Fonction et établissement */
@@ -150,12 +162,18 @@ header p {
     font-weight: bold;
     line-height: 1.6;
     text-shadow: 1px 1px 4px black;
+    margin: 0;
+    width: 100%;        /* Permet à l'écriture d'occuper l'espace disponible */
 }
 
 /* Adaptation aux téléphones */
 @media (max-width: 768px) {
     header {
         min-height: 180px;
+        /* Ajustement de la largeur sur mobile pour éviter les bugs visuels */
+        width: 100vw; 
+        margin-left: -50vw;
+        margin-right: -50vw;
     }
 
     header h1 {
@@ -177,6 +195,7 @@ header p {
         Laâyoune Sahara
     </p>
 </header>
+
 
 <main>
 
