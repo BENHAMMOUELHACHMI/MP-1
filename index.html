@@ -123,24 +123,50 @@
 
     <h2>Bienvenue dans l'espace pédagogique de MP-1</h2>
     <p><strong>Pr. Ag.Mr. E. BENHAMMOU</strong> — Cours, exercices, DS, DM, TP ,TIPE  et préparation aux concours.</p>
-    <div class="info-tipe">
+   ```html
+<div class="info-tipe">
     <h3>📢 INFORMATION IMPORTANTE – TIPE</h3>
 
     <p>
         Vous rencontrez des difficultés à trouver un sujet de TIPE ?
-        Une liste de sujets proposés est désormais disponible dans la rubrique
-        <strong>TIPE</strong>, accessible juste en dessous.
+        Une liste de <strong>sujets proposés</strong> est désormais disponible
+        dans la rubrique <strong>TIPE</strong>, juste en dessous.
     </p>
 
     <div class="arrow-down">👇</div>
 
-    <p><strong>Consultez les propositions et trouvez l'inspiration !</strong></p>
+    <p class="encouragement">
+        Consultez les propositions et trouvez votre inspiration !
+    </p>
 </div>
 
 <style>
-.arrow-down {
-    font-size: 32px;
+.info-tipe {
+    background: linear-gradient(135deg, #fff8dc, #ffe8a3);
+    border: 2px solid #e69b00;
+    border-left: 7px solid #e67e00;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 20px auto;
     text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.info-tipe h3 {
+    color: #a64b00;
+    font-size: 21px;
+    margin-top: 0;
+    font-weight: bold;
+}
+
+.info-tipe p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.arrow-down {
+    font-size: 36px;
     animation: bounce 0.8s infinite ease-in-out;
 }
 
@@ -148,7 +174,14 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-12px); }
 }
+
+.encouragement {
+    color: #a64b00 !important;
+    font-weight: bold;
+    margin-bottom: 0;
+}
 </style>
+```
 <section class="programme-colles">
   <div class="programme-header">
     <h1>📚 Programme de colles</h1>
