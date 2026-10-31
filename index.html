@@ -101,11 +101,6 @@
         border-top: 1px solid #d9e1e8;
         margin-top: 40px;
     }
-</style>
-</head>
-<body>
-<head>
-    <!-- Vos autres paramètres et fichiers CSS -->
 <style>
 /* =========================================
    EN-TÊTE COMPLET (BANDE EXTRA LARGE)
@@ -114,7 +109,7 @@
 header {
     position: relative;
     
-    /* Force la bande noire à prendre toute la largeur de l'écran */
+    /* Force la bande à prendre toute la largeur de l'écran */
     width: 100vw;
     left: 50%;
     right: 50%;
@@ -122,7 +117,7 @@ header {
     margin-right: -50vw;
     box-sizing: border-box;
     
-    background-color: #183650; /* Couleur de secours identique au fond de l'image */
+    background-color: #183650;
     overflow: hidden;
 }
 
@@ -140,7 +135,7 @@ header {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: contain; /* Garantit qu'aucune partie n'est coupée */
+    object-fit: contain;
 }
 
 /* Le filtre sombre pour rendre le texte bien visible */
@@ -168,40 +163,49 @@ header {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 5%; /* Donne un espace de sécurité sur les bords */
+    padding: 0 5%;
     box-sizing: border-box;
 }
 
-/* Nom du professeur - Écrit large */
+/* Nom du professeur - EFFET \textsc{} (Petites Capitales) */
 .header-content h1 {
     color: white;
-    font-size: 2.2vw; /* Taille fluide basée sur la largeur de l'écran */
+    font-size: 2.4vw; 
     font-weight: bold;
+    font-variant: small-caps; 
+    letter-spacing: 1px;       
     text-shadow: 2px 2px 5px black;
-    margin: 0 0 1% 0;
+    margin: 0; /* Nettoyage des marges pour un contrôle précis */
     width: 100%;
-    white-space: nowrap; /* Empêche le nom de revenir à la ligne brutalement */
+    white-space: nowrap;
 }
 
-/* Fonction et établissement - Écrit large */
+/* Fonction et établissement - DÉCALÉE VERS LE BAS */
 .header-content p {
     color: white;
-    font-size: 1.2vw; /* Taille fluide */
+    font-size: 1.2vw;
     font-weight: bold;
     line-height: 1.5;
     text-shadow: 1px 1px 4px black;
-    margin: 0;
+    
+    /* MODIFICATION ICI : Décale la phrase vers le bas d'environ 2 cm */
+    margin-top: 45px; 
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    
     width: 100%;
 }
 
 /* Adaptation aux téléphones portables */
 @media (max-width: 768px) {
     .header-content h1 {
-        font-size: 4.5vw; /* S'agrandit proportionnellement sur mobile */
+        font-size: 4.8vw;
         white-space: normal;
     }
     .header-content p {
         font-size: 2.8vw;
+        margin-top: 20px; /* Évite un décalage trop grand sur petit écran */
     }
 }
 </style>
@@ -209,7 +213,7 @@ header {
 
 <header>
     <div class="header-container">
-        <!-- L'image est insérée ici pour forcer ses vraies proportions entières -->
+        <!-- L'image entière -->
         <img class="header-bg" src="images/lycee-cpge.png.PNG" alt="Lycée CPGE">
         
         <!-- Le filtre sombre -->
@@ -225,6 +229,7 @@ header {
         </div>
     </div>
 </header>
+
 
 
 
