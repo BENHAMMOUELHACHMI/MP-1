@@ -171,12 +171,20 @@ header {
     line-height: 1.2;
 }
 
-/* Séparateur */
+/* Séparateur doré étendu */
 .header-line {
-    width: 65px;
-    height: 2px;
-    background: #e5c47c;
-    margin: 9px 0;
+    width: min(90%, 750px);
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #e5c47c 10%,
+        #fff0bd 50%,
+        #e5c47c 90%,
+        transparent
+    );
+    margin: 12px 0;
+    border-radius: 5px;
     flex-shrink: 0;
 }
 
