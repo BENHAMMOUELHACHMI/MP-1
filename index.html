@@ -102,26 +102,22 @@
         margin-top: 40px;
     }
 <style>
+
 /* =========================================
-   EN-TÊTE COMPLET (BANDE EXTRA LARGE)
+   EN-TÊTE ACADÉMIQUE – STYLE PREMIUM
 ========================================= */
 
 header {
     position: relative;
-    
-    /* Force la bande à prendre toute la largeur de l'écran */
     width: 100vw;
     left: 50%;
-    right: 50%;
     margin-left: -50vw;
-    margin-right: -50vw;
     box-sizing: border-box;
-    
-    background-color: #183650;
+    background: #10243b;
     overflow: hidden;
 }
 
-/* Conteneur de l'image de fond et du texte superposé */
+/* Image entière, sans découpage */
 .header-container {
     position: relative;
     width: 100%;
@@ -130,106 +126,207 @@ header {
     align-items: center;
 }
 
-/* L'image s'affiche ENTIÈREMENT sans aucune découpe */
 .header-bg {
+    display: block;
     width: 100%;
     height: auto;
-    display: block;
     object-fit: contain;
 }
 
-/* Le filtre sombre pour rendre le texte bien visible */
+/* Voile sombre et élégant */
 .header-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        rgba(8, 29, 53, 0.60),
-        rgba(8, 29, 53, 0.70)
-    );
+    inset: 0;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8, 25, 45, 0.66),
+            rgba(12, 37, 61, 0.58),
+            rgba(8, 25, 45, 0.72)
+        );
 }
 
-/* L'écriture prend toute la bande et n'est plus compressée au centre */
+/* Contenu superposé */
 .header-content {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    inset: 0;
+    z-index: 2;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     text-align: center;
-    padding: 0 5%;
+    padding: 12px 4%;
     box-sizing: border-box;
 }
 
-/* Nom du professeur - EFFET \textsc{} (Petites Capitales) */
+/* Petite signature supérieure */
+.header-label {
+    color: #e5c47c;
+    font-size: clamp(9px, 0.85vw, 13px);
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-shadow: 1px 2px 4px #000;
+}
+
+/* Nom du professeur */
 .header-content h1 {
-    color: white;
-    font-size: 2.4vw; 
-    font-weight: bold;
-    font-variant: small-caps; 
-    letter-spacing: 1px;       
-    text-shadow: 2px 2px 5px black;
-    margin: 0; /* Nettoyage des marges pour un contrôle précis */
-    width: 100%;
-    white-space: nowrap;
+    color: #fff;
+    font-size: clamp(20px, 3vw, 43px);
+    font-weight: 900;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+    margin: 0;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,.8),
+        0 0 18px rgba(229,196,124,.35);
 }
 
-/* Fonction et établissement - DÉCALÉE VERS LE BAS */
-.header-content p {
-    color: white;
-    font-size: 1.2vw;
-    font-weight: bold;
-    line-height: 1.5;
-    text-shadow: 1px 1px 4px black;
-    
-    /* MODIFICATION ICI : Décale la phrase vers le bas d'environ 2 cm */
-    margin-top: 45px; 
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
-    
-    width: 100%;
+/* Trait décoratif doré */
+.header-line {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #e5c47c,
+        #fff0bd,
+        #e5c47c,
+        transparent
+    );
+    margin: 15px auto;
+    border-radius: 10px;
 }
 
-/* Adaptation aux téléphones portables */
+/* Fonction */
+.header-function {
+    color: #f4e5c2;
+    font-size: clamp(12px, 1.35vw, 19px);
+    font-weight: 700;
+    letter-spacing: .5px;
+    margin: 0 0 9px;
+    text-shadow: 1px 2px 5px #000;
+}
+
+/* Établissement */
+.header-school {
+    color: #fff;
+    font-size: clamp(10px, 1.15vw, 16px);
+    font-weight: 600;
+    line-height: 1.6;
+    margin: 0;
+    text-shadow: 1px 2px 5px #000;
+}
+
+/* Localisation */
+.header-location {
+    color: #e5c47c;
+    font-size: clamp(10px, 1vw, 14px);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-top: 5px;
+    text-shadow: 1px 2px 4px #000;
+}
+
+/* Animation discrète */
+.header-content h1 {
+    animation: fadeInHeader 1.2s ease both;
+}
+
+@keyframes fadeInHeader {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Adaptation mobile */
 @media (max-width: 768px) {
+    .header-content {
+        padding: 5px 3%;
+    }
+
+    .header-label {
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+
     .header-content h1 {
-        font-size: 4.8vw;
+        font-size: clamp(17px, 4.5vw, 25px);
+        letter-spacing: 1px;
         white-space: normal;
     }
-    .header-content p {
-        font-size: 2.8vw;
-        margin-top: 20px; /* Évite un décalage trop grand sur petit écran */
+
+    .header-line {
+        width: 55px;
+        margin: 7px auto;
+    }
+
+    .header-function {
+        font-size: clamp(10px, 2.5vw, 14px);
+        margin-bottom: 4px;
+    }
+
+    .header-school {
+        font-size: clamp(9px, 2vw, 12px);
+        line-height: 1.35;
+    }
+
+    .header-location {
+        font-size: 9px;
+        margin-top: 2px;
     }
 }
 </style>
-</head>
 
 <header>
     <div class="header-container">
-        <!-- L'image entière -->
-        <img class="header-bg" src="images/lycee-cpge.png.PNG" alt="Lycée CPGE">
-        
-        <!-- Le filtre sombre -->
+
+        <!-- Photographie complète, sans découpage -->
+        <img
+            class="header-bg"
+            src="images/image.cpeg.png.PNG"
+            alt="Lycée Lissane Eddine Ibn Al Khatib"
+        >
+
+        <!-- Voile sombre -->
         <div class="header-overlay"></div>
-        
-        <!-- Le texte étalé sur toute la bande -->
+
+        <!-- Présentation académique -->
         <div class="header-content">
+
+            <div class="header-label">
+                Physique • Chimie • Classes Préparatoires
+            </div>
+
             <h1>Pr. Ag. Mr. E. BENHAMMOU</h1>
-            <p>
-                Professeur Agrégé aux Classes Préparatoires<br>
-                au Lycée Lissane Eddine Ibn Al Khatib – Laâyoune Sahara
+
+            <div class="header-line"></div>
+
+            <p class="header-function">
+                Professeur Agrégé aux Classes Préparatoires
             </p>
+
+            <p class="header-school">
+                Lycée Lissane Eddine Ibn Al Khatib
+            </p>
+
+            <div class="header-location">
+                LAÂYOUNE – SAHARA
+            </div>
+
         </div>
     </div>
 </header>
-
 
 
 
