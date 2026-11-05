@@ -291,6 +291,266 @@ header {
     <h2>Bienvenue dans l'espace pédagogique de MP-1</h2>
     <p><strong>Pr. Ag.Mr. E. BENHAMMOU</strong> — Cours, exercices, DS, DM, TP ,TIPE  et préparation aux concours.</p>
     
+
+<!-- =====================================================
+     ANNONCE : NOUVEAU DEVOIR MAISON SUP - EFFET HALL
+===================================================== -->
+
+<div class="hall-annonce">
+
+    <div class="hall-deco hall-megaphone">📢</div>
+    <div class="hall-deco hall-bell">🔔</div>
+
+    <div class="hall-bandeau">
+        NOUVEAU DEVOIR MAISON (SUP)
+    </div>
+
+    <div class="hall-message">
+        Un devoir maison portant sur
+    </div>
+
+    <div class="hall-sujet">
+        L'effet Hall
+    </div>
+
+    <div class="hall-a-rendre">
+        est à rendre.
+    </div>
+
+    <div class="hall-rubrique">
+        <div class="hall-folder">📂</div>
+
+        <div class="hall-rubrique-texte">
+            Vous trouverez l'énoncé dans la rubrique :
+
+            <div class="hall-dm">
+                « DEVOIRS MAISON (DM) »
+            </div>
+
+            du site.
+        </div>
+    </div>
+
+    <div class="hall-footer">
+        <div class="hall-livres">📚</div>
+
+        <div class="hall-bon-travail">
+            Bon travail à tous !
+        </div>
+
+        <div class="hall-signature">
+            Pr. Ag. E. BENHAMMOU
+        </div>
+    </div>
+
+</div>
+
+<style>
+
+/* CONTENEUR PRINCIPAL */
+
+.hall-annonce {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 25px auto;
+    padding: 25px 4% 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #082d63;
+
+    background: linear-gradient(
+        145deg,
+        #a9dcff 0%,
+        #f8fbff 45%,
+        #c5e7ff 100%
+    );
+
+    border: 3px solid #64b5f6;
+    border-radius: 20px;
+    box-shadow: 0 8px 22px rgba(13,71,161,.22);
+}
+
+/* DÉCORATIONS */
+
+.hall-deco {
+    position: absolute;
+    top: 12px;
+    font-size: clamp(30px, 5vw, 65px);
+    z-index: 2;
+}
+
+.hall-megaphone {
+    left: 12px;
+}
+
+.hall-bell {
+    right: 12px;
+}
+
+/* BANDEAU ROUGE */
+
+.hall-bandeau {
+    display: inline-block;
+    max-width: 85%;
+    margin: 0 auto 25px;
+    padding: 18px 25px;
+
+    background: linear-gradient(
+        120deg,
+        #b71c1c,
+        #f44336,
+        #b71c1c
+    );
+
+    color: white;
+    font-size: clamp(18px, 3vw, 34px);
+    font-weight: 900;
+    letter-spacing: 1px;
+    border: 3px solid #ff8a80;
+    border-radius: 18px;
+    box-shadow: 0 7px 12px rgba(100,0,0,.3);
+    text-shadow: 2px 3px 3px rgba(0,0,0,.3);
+}
+
+/* TITRE */
+
+.hall-message {
+    font-size: clamp(20px, 3.5vw, 39px);
+    font-weight: 800;
+    margin: 5px 0;
+}
+
+.hall-sujet {
+    display: inline-block;
+    background: linear-gradient(90deg, #ffca28, #ffeb3b);
+    color: #082d63;
+    font-size: clamp(30px, 5vw, 55px);
+    font-weight: 900;
+    font-style: italic;
+    padding: 5px 35px;
+    margin: 8px auto;
+    border-radius: 20px;
+}
+
+.hall-a-rendre {
+    font-size: clamp(22px, 3.5vw, 38px);
+    font-weight: 800;
+    margin: 0 0 22px;
+}
+
+/* RUBRIQUE DM */
+
+.hall-rubrique {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 18px;
+    margin: 15px 0;
+
+    background: linear-gradient(110deg, #bbdefb, #e3f2fd);
+    border: 3px solid #64b5f6;
+    border-radius: 18px;
+    box-shadow: 0 4px 10px rgba(21,101,192,.15);
+}
+
+.hall-folder {
+    font-size: clamp(35px, 5vw, 65px);
+}
+
+.hall-rubrique-texte {
+    font-size: clamp(15px, 2.4vw, 27px);
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.hall-dm {
+    display: inline-block;
+    background: #0d47a1;
+    color: #ffeb3b;
+    padding: 5px 15px;
+    margin: 7px 0;
+    border-radius: 25px;
+    font-weight: 900;
+}
+
+/* PIED DE L'ANNONCE */
+
+.hall-footer {
+    position: relative;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-top: 10px;
+}
+
+.hall-livres {
+    font-size: 45px;
+}
+
+.hall-bon-travail {
+    font-size: clamp(23px, 3.5vw, 38px);
+    font-weight: 900;
+    font-style: italic;
+    color: #0d47a1;
+    flex: 1;
+}
+
+.hall-signature {
+    background: #0d3470;
+    color: white;
+    padding: 13px 20px;
+    border-radius: 30px;
+    font-size: clamp(13px, 1.7vw, 19px);
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,.2);
+}
+
+/* ADAPTATION AUX TÉLÉPHONES */
+
+@media(max-width:600px) {
+
+    .hall-annonce {
+        padding: 18px 10px;
+    }
+
+    .hall-deco {
+        font-size: 27px;
+        top: 5px;
+    }
+
+    .hall-bandeau {
+        max-width: 90%;
+        padding: 14px 10px;
+        margin-top: 25px;
+    }
+
+    .hall-rubrique {
+        gap: 8px;
+        padding: 10px 5px;
+    }
+
+    .hall-footer {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .hall-signature {
+        margin-top: 8px;
+    }
+
+}
+
+</style>
+
+<!-- ================= FIN DE L'ANNONCE ================= -->
+
+<!--    
 <!-- ALERTE : RECTIFICATION TP -->
 <div style="
     background: linear-gradient(120deg, #7f0000, #c62828, #8e0000);
@@ -366,7 +626,7 @@ header {
     }
 }
 </style>
-
+-->
     <!-- Début du Flash Info -->
 <div style="
     background-color: #e3f2fd;
