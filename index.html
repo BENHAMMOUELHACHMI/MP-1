@@ -292,19 +292,23 @@ header {
     <p><strong>Pr. Ag.Mr. E. BENHAMMOU</strong> — Cours, exercices, DS, DM, TP ,TIPE  et préparation aux concours.</p>
     
 
+
 <!-- =====================================================
      ANNONCE : NOUVEAU DEVOIR MAISON SUP - EFFET HALL
 ===================================================== -->
 
 <div class="hall-annonce">
 
+    <!-- DÉCORATIONS -->
     <div class="hall-deco hall-megaphone">📢</div>
     <div class="hall-deco hall-bell">🔔</div>
 
+    <!-- TITRE -->
     <div class="hall-bandeau">
         NOUVEAU DEVOIR MAISON (SUP)
     </div>
 
+    <!-- MESSAGE PRINCIPAL -->
     <div class="hall-message">
         Un devoir maison portant sur
     </div>
@@ -317,37 +321,53 @@ header {
         est à rendre.
     </div>
 
+    <!-- RUBRIQUE DM -->
     <div class="hall-rubrique">
+
         <div class="hall-folder">📂</div>
 
         <div class="hall-rubrique-texte">
             Vous trouverez l'énoncé dans la rubrique :
 
             <div class="hall-dm">
-                « DEVOIRS MAISON (DM) »
+                «  (DM) ».
             </div>
 
-            du site.
+           
         </div>
+
     </div>
 
+    <!-- PIED DE L'ANNONCE -->
     <div class="hall-footer">
+
         <div class="hall-livres">📚</div>
 
-        <div class="hall-bon-travail">
-            Bon travail à tous !
+        <div class="hall-felicitation">
+
+            <div class="hall-bon-travail">
+                Bon travail à tous !
+            </div>
+
+            <div class="hall-trait-rouge"></div>
+
         </div>
 
         <div class="hall-signature">
             Pr. Ag. E. BENHAMMOU
+            <span class="hall-trait-jaune"></span>
         </div>
+
     </div>
 
 </div>
 
+
 <style>
 
-/* CONTENEUR PRINCIPAL */
+/* =========================================
+   CONTENEUR PRINCIPAL
+========================================= */
 
 .hall-annonce {
     position: relative;
@@ -372,7 +392,9 @@ header {
     box-shadow: 0 8px 22px rgba(13,71,161,.22);
 }
 
-/* DÉCORATIONS */
+/* =========================================
+   DÉCORATIONS
+========================================= */
 
 .hall-deco {
     position: absolute;
@@ -389,7 +411,9 @@ header {
     right: 12px;
 }
 
-/* BANDEAU ROUGE */
+/* =========================================
+   BANDEAU ROUGE
+========================================= */
 
 .hall-bandeau {
     display: inline-block;
@@ -408,13 +432,17 @@ header {
     font-size: clamp(18px, 3vw, 34px);
     font-weight: 900;
     letter-spacing: 1px;
+
     border: 3px solid #ff8a80;
     border-radius: 18px;
+
     box-shadow: 0 7px 12px rgba(100,0,0,.3);
     text-shadow: 2px 3px 3px rgba(0,0,0,.3);
 }
 
-/* TITRE */
+/* =========================================
+   TITRE PRINCIPAL
+========================================= */
 
 .hall-message {
     font-size: clamp(20px, 3.5vw, 39px);
@@ -424,11 +452,18 @@ header {
 
 .hall-sujet {
     display: inline-block;
-    background: linear-gradient(90deg, #ffca28, #ffeb3b);
+
+    background: linear-gradient(
+        90deg,
+        #ffca28,
+        #ffeb3b
+    );
+
     color: #082d63;
     font-size: clamp(30px, 5vw, 55px);
     font-weight: 900;
     font-style: italic;
+
     padding: 5px 35px;
     margin: 8px auto;
     border-radius: 20px;
@@ -440,19 +475,28 @@ header {
     margin: 0 0 22px;
 }
 
-/* RUBRIQUE DM */
+/* =========================================
+   ENCADRÉ RUBRIQUE DM
+========================================= */
 
 .hall-rubrique {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
+
     padding: 18px;
     margin: 15px 0;
 
-    background: linear-gradient(110deg, #bbdefb, #e3f2fd);
+    background: linear-gradient(
+        110deg,
+        #bbdefb,
+        #e3f2fd
+    );
+
     border: 3px solid #64b5f6;
     border-radius: 18px;
+
     box-shadow: 0 4px 10px rgba(21,101,192,.15);
 }
 
@@ -468,50 +512,134 @@ header {
 
 .hall-dm {
     display: inline-block;
+
     background: #0d47a1;
     color: #ffeb3b;
+
     padding: 5px 15px;
     margin: 7px 0;
+
     border-radius: 25px;
     font-weight: 900;
 }
 
-/* PIED DE L'ANNONCE */
+/* =========================================
+   PIED DE L'ANNONCE
+========================================= */
 
 .hall-footer {
     position: relative;
-    min-height: 90px;
+    min-height: 110px;
+
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
+
     gap: 15px;
-    padding-top: 10px;
+    padding: 12px 2%;
 }
 
 .hall-livres {
     font-size: 45px;
 }
 
-.hall-bon-travail {
-    font-size: clamp(23px, 3.5vw, 38px);
-    font-weight: 900;
-    font-style: italic;
-    color: #0d47a1;
+/* =========================================
+   BON TRAVAIL À TOUS
+========================================= */
+
+.hall-felicitation {
     flex: 1;
+    text-align: center;
+    min-width: 180px;
 }
+
+.hall-bon-travail {
+    font-family: "Segoe Script",
+                 "Brush Script MT",
+                 "Comic Sans MS",
+                 cursive;
+
+    font-size: clamp(25px, 3.8vw, 43px);
+    font-weight: bold;
+    font-style: italic;
+
+    color: #0d3470;
+
+    text-shadow: 1px 2px 2px rgba(13,52,112,.15);
+    white-space: nowrap;
+}
+
+/* SOULIGNEMENT ROUGE INCURVÉ */
+
+.hall-trait-rouge {
+    width: 65%;
+    max-width: 260px;
+    height: 13px;
+
+    margin: 5px auto 0;
+
+    border-top: 5px solid #c62828;
+    border-radius: 50%;
+
+    transform: rotate(-3deg);
+}
+
+/* =========================================
+   SIGNATURE DU PROFESSEUR
+========================================= */
 
 .hall-signature {
-    background: #0d3470;
+    position: relative;
+    display: inline-block;
+
+    background: linear-gradient(
+        120deg,
+        #082d63,
+        #0d47a1
+    );
+
     color: white;
-    padding: 13px 20px;
-    border-radius: 30px;
-    font-size: clamp(13px, 1.7vw, 19px);
+
+    padding: 14px 25px 18px;
+    border-radius: 35px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(14px, 1.8vw, 20px);
+
     font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0,0,0,.2);
+    font-style: italic;
+
+    white-space: nowrap;
+
+    box-shadow: 0 5px 12px rgba(0,0,0,.25);
 }
 
-/* ADAPTATION AUX TÉLÉPHONES */
+/* SOULIGNEMENT JAUNE */
+
+.hall-trait-jaune {
+    position: absolute;
+
+    bottom: 5px;
+    left: 12%;
+
+    width: 76%;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ffeb3b,
+        #ffc107,
+        transparent
+    );
+
+    border-radius: 50%;
+}
+
+/* =========================================
+   ADAPTATION AUX TÉLÉPHONES
+========================================= */
 
 @media(max-width:600px) {
 
@@ -537,11 +665,17 @@ header {
 
     .hall-footer {
         flex-direction: column;
-        gap: 8px;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .hall-bon-travail {
+        white-space: normal;
+        font-size: 27px;
     }
 
     .hall-signature {
-        margin-top: 8px;
+        font-size: 15px;
     }
 
 }
@@ -549,6 +683,7 @@ header {
 </style>
 
 <!-- ================= FIN DE L'ANNONCE ================= -->
+
 
 <!--    
 <!-- ALERTE : RECTIFICATION TP -->
@@ -576,7 +711,7 @@ header {
         text-transform: uppercase;
         letter-spacing: 1px;
     ">
-        ALERTE – RECTIFICATION IMPORTANTE
+        <!-- ALERTE – RECTIFICATION IMPORTANTE-->
     </h2>
 
     <p style="font-size: 1.05em; line-height: 1.7; margin: 8px 0;">
@@ -584,8 +719,8 @@ header {
     </p>
 
     <p style="margin: 10px 0;">
-        Cette rectification concerne le groupe ayant effectué
-        la séance de TP de <strong>mercredi dernier</strong>.
+      <!--  Cette rectification concerne le groupe ayant effectué
+        la séance de TP de <strong>mercredi dernier</strong>.-->
     </p>
 
     <div style="
@@ -597,22 +732,22 @@ header {
         max-width: 430px;
         font-size: 1.2em;
     ">
-        Valeur correcte de l'avancement maximal :
+       <!-- Valeur correcte de l'avancement maximal :
         <br>
         <strong style="font-size: 1.5em; color: #ffeb3b;">
             ξ<sub>max</sub> = 0,20 mol
-        </strong>
+        </strong>-->
         <br>
         <span style="font-size: 0.85em;">(et non 1 mol)</span>
     </div>
 
     <p style="font-weight: bold; margin-bottom: 5px;">
-        Merci de tenir compte de cette correction dans vos calculs
-        et votre compte rendu.
+       <!--   Merci de tenir compte de cette correction dans vos calculs
+        et votre compte rendu.-->
     </p>
 
     <p style="text-align: right; margin-bottom: 0; font-weight: bold;">
-        Pr. Ag. E. BENHAMMOU
+        <!--  Pr. Ag. E. BENHAMMOU-->
     </p>
 </div>
 
